@@ -1,0 +1,156 @@
+<table
+  mat-table
+  #table
+  [dataSource]="dataSource"
+  class="mat-elevation-z0"
+  matSort
+>
+  <ng-container
+    *ngFor="let column of columns"
+    [matColumnDef]="column.columnDef"
+  >
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>
+      <div *ngIf="column.isView === true; else second">
+        {{ column.header }}
+      </div>
+
+      <ng-template #second>
+        <div *ngIf="column.isApprove === true; else third">
+          <button
+            class="w-28 h-6 rounded-sm"
+            style="background-color: #2e7d32; color: white; font-family: Roboto"
+          >
+            {{ column.header }}
+          </button>
+        </div>
+      </ng-template>
+      <ng-template #third>
+        <div *ngIf="column.isReject === true; else forth">
+          <button
+            class="w-28 h-6 rounded-sm"
+            style="background-color: #d32f2f; color: white; font-family: Roboto"
+          >
+            {{ column.header }}
+          </button>
+        </div>
+      </ng-template>
+      <ng-template #forth>
+        {{ column.header }}
+      </ng-template>
+    </mat-header-cell>
+    <mat-cell *cdkCellDef="let row" class="mb-1">
+      <div
+        class="rounded-full w-7 h-7 overflow-hidden bg-cover bg-center bg-no-repeat"
+        *ngIf="column.isImage === true; else second"
+        [style]="'background-image: url(/assets/images/' + row.avatar + ');'"
+      ></div>
+
+      <ng-template #second>
+        <div *ngIf="column.isView === true; else third">
+          <button
+            class="w-28 h-6 rounded-sm"
+            style="background-color: #0288d1; color: white; font-family: Roboto"
+            (click)="onViewClick(row)"
+          >
+            {{ row[column.columnDef] }}
+          </button>
+        </div>
+      </ng-template>
+
+      <ng-template #third>
+        <div *ngIf="column.isApprove === true; else forth">
+          <button
+            *ngIf="row['status'] === 'Rejected'; else see"
+            class="w-28 h-6 rounded-sm"
+            style="background-color: #abebae; color: white; font-family: Roboto"
+            disabled="false"
+          >
+            {{ row[column.columnDef] }}
+          </button>
+          <ng-template #see>
+            <button
+              class="w-28 h-6 rounded-sm"
+              style="
+                background-color: #2e7d32;
+                color: white;
+                font-family: Roboto;
+              "
+              (click)="onApprove()"
+            >
+              {{ row[column.columnDef] }}
+            </button>
+          </ng-template>
+        </div>
+      </ng-template>
+
+      <ng-template #forth>
+        <div *ngIf="column.isReject === true; else five">
+          <!-- <button
+            class="w-28 h-6 rounded-sm"
+            style="background-color: #d32f2f; color: white; font-family: Roboto"
+          >
+            {{ row[column.columnDef] }}
+          </button> -->
+          <button
+            *ngIf="
+              row['status'] === 'Approved' || row['status'] === 'Pending';
+              else see1
+            "
+            class="w-28 h-6 rounded-sm"
+            style="background-color: #f7a3a3; color: white; font-family: Roboto"
+            disabled="false"
+          >
+            {{ row[column.columnDef] }}
+          </button>
+          <ng-template #see1>
+            <button
+              class="w-28 h-6 rounded-sm"
+              style="
+                background-color: #d32f2f;
+                color: white;
+                font-family: Roboto;
+              "
+              (click)="onReject()"
+            >
+              {{ row[column.columnDef] }}
+            </button>
+          </ng-template>
+        </div>
+      </ng-template>
+
+      <ng-template #five>
+        <!-- <div *ngIf="row[column.columnDef] === 'Pending'">
+          <div>{{ row[column.columnDef] }}</div>
+        </div> -->
+        <div class="{{ row[column.columnDef] }}">
+          {{ row[column.columnDef] }}
+        </div>
+      </ng-template>
+    </mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="view">
+    <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+    <mat-cell *cdkCellDef="let element"> <div>View</div> </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="approve">
+    <mat-header-cell *matHeaderCellDef>Approve All</mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> <div>Approve</div> </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="reject">
+    <mat-header-cell *matHeaderCellDef>Reject All</mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> <div>Reject</div> </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="reviewAction">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element" class="flex justify-end">
+      <button class="button-style">Review</button>
+    </mat-cell>
+  </ng-container> -->
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</table>

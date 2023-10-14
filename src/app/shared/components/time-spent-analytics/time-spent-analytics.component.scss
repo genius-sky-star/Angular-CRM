@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  @apply w-full shadow shadow-gray-300 rounded-lg p-2;
+}
+#time-spent-anaytics-show {
+  color: black;
+  text-align: center;
+  font-family: "DS-Digital", sans-serif;
+
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

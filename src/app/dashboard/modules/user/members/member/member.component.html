@@ -1,0 +1,428 @@
+<div class="container">
+  <div class="breacrumb-section">
+
+    <p class="mr-2 breacrumb-text"> Users </p>
+
+    <img src="../../../../../assets/images/arrow-right.svg" />
+    <a class="mr-2 breacrumb-text" [routerLink]="['/dashboard/user/members']">
+      Members
+    </a>
+
+    <img src="../../../../../assets/images/arrow-right.svg" />
+    <a
+      class="mr-2 breacrumb-text"
+      [routerLink]="['/dashboard/user/members/total-members']"
+    >
+      Total Members
+    </a>
+
+    <img src="../../../../../assets/images/arrow-right.svg" />
+    <span class="breacrumb-text-selected">
+      {{ username }}
+    </span>
+  </div>
+
+  <div class="search-section">
+    <div class="flex items-center justify-center">
+      <mat-icon>search</mat-icon>
+      <input placeholder="Global search" type="text" />
+    </div>
+  </div>
+
+  <div class="member-section">
+    -
+    <div class="member-info">
+      <span class="username">
+        {{ username }}
+      </span>
+      <div class="online-container">
+        <div class="circle-green"></div>
+        <div class="text-status">Online</div>
+        <mat-slide-toggle
+          [checked]="true"
+          class="slide-toogle-style"
+        ></mat-slide-toggle>
+      </div>
+      <div class="wallet">
+        <span class="wallet-text">Wallet</span>
+        <div class="amount-container">
+          <img src="../../../../../../assets/images/active-streams.png" />
+          <span class="amount">{{ member?.Tokens }}</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="fans-number">20k Girls</p>
+  </div>
+
+  <div class="profil-section">
+    <img [src]="'../../../../../../assets/images/' + member?.Image" />
+    <div class="grid grid-cols-5 items-center justify-items-center ml-4">
+      <div class="profil-item-name mr-4">
+        <span class="item-1">User Name</span>
+        <p class="item-2">{{ member?.Username }}</p>
+        <span class="item-3">Full Name</span>
+        <p class="item-4">Alicia Gwen Stevens</p>
+      </div>
+
+      <div class="profil-item mr-4">
+        <span class="item-1">Gender</span>
+        <p class="item-2">Female</p>
+        <span class="item-3">Email</span>
+        <p class="item-4">{{ member?.Email }}</p>
+      </div>
+
+      <div class="profil-item mr-4">
+        <span class="item-1">Mobile Number</span>
+        <p class="item-2">12-876-09876</p>
+        <span class="item-3">IP Address</span>
+        <p class="item-4">192.168.1.123</p>
+      </div>
+
+      <div class="profil-item mr-4">
+        <span class="item-1">Created Date</span>
+        <p class="item-2">{{ member?.Created }}</p>
+        <span class="item-3">Country</span>
+        <p class="item-4">United States Of America</p>
+      </div>
+
+      <div class="profil-item">
+        <span class="item-1">Zodiac Sign</span>
+        <p class="item-2">Gemini</p>
+        <span class="item-3">Occupation</span>
+        <p class="item-4">Actor</p>
+      </div>
+    </div>
+  </div>
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Overview" isActive="true">
+      <ng-template mat-tab-label>
+        <div *ngIf="tabName == 'Overview'" class="mat-tab-style">Overview</div>
+      </ng-template>
+      <div class="grid grid-cols-2 w-full rounded">
+        <div class="mr-4">
+          <div class="mt-4 bg-white rounded-lg px-2 py-4 w-full">
+            <div class="flex">
+              <app-analytic-header
+                class="flex-grow hemi-head-bold-italic"
+                title="Chat Frequency"
+                description="Showing analysis for the month of August"
+              ></app-analytic-header>
+              <app-time-filter [selected]="selected"></app-time-filter>
+            </div>
+            <div
+              style="
+                width: auto;
+                margin-top: 18px;
+                height: 1.33px;
+                background: #c4c4c4;
+              "
+            ></div>
+            <app-line-chart
+              [lineChartConfig]="charFrequencyConfig"
+            ></app-line-chart>
+          </div>
+
+          <div class="mt-6 mb-6 px-3.5 py-6 bg-white rounded-lg">
+            <div class="flex">
+              <app-analytic-header
+                class="flex-grow hemi-head-bold-italic"
+                title="Digital Product Purchase"
+                description="Showing analysis for the month of August"
+              ></app-analytic-header>
+              <app-time-filter [selected]="selected"></app-time-filter>
+            </div>
+            <div
+              style="
+                margin-top: 9px;
+                width: auto;
+                height: 1.33px;
+                background: #ebeff2;
+              "
+            ></div>
+
+            <div class="flex mt-4">
+              <app-digital-product-purchase
+                class="mx-auto"
+              ></app-digital-product-purchase>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-1">
+          <div class="mt-4 bg-white rounded-lg px-2 py-4 w-full">
+            <div class="flex">
+              <app-analytic-header
+                class="flex-grow hemi-head-bold-italic"
+                title="Interaction Rate"
+                description="Percentage of members' interactions with
+                the platform in the past week"
+              ></app-analytic-header>
+              <app-time-filter [selected]="selected"></app-time-filter>
+            </div>
+            <app-line-chart
+              [lineChartConfig]="interactionRateConfig"
+            ></app-line-chart>
+          </div>
+
+          <div class="mt-6 mb-6 px-3.5 py-6 bg-white rounded-lg">
+            <div class="flex">
+              <app-analytic-header
+                class="flex-grow hemi-head-bold-italic"
+                title="Live Sessions Attended"
+                description="Number of live sessions attended In past week"
+              ></app-analytic-header>
+              <app-time-filter [selected]="selected"></app-time-filter>
+            </div>
+            <div
+              style="
+                margin-top: 9px;
+                width: auto;
+                height: 1.33px;
+                background: #ebeff2;
+              "
+            ></div>
+
+            <div class="flex mt-4">
+              <app-session-attended-bar-char></app-session-attended-bar-char>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Transaction History">
+      <ng-template mat-tab-label>
+        <div
+          *ngIf="secondTabName == 'Transaction History'"
+          class="mat-tab-style"
+        >
+          Transaction History
+        </div>
+      </ng-template>
+
+      <div class="grid grid-cols-2 mt-0.5">
+        <div class="mr-4">
+          <mat-accordion [multi]="true">
+            <mat-expansion-panel
+              class="custom-header"
+              hideToggle="true"
+              #example
+            >
+              <mat-expansion-panel-header class="arrow-color">
+                <mat-panel-title>
+                  <div class="title-section">
+                    <p class="title-text">Digital Product Purchases</p>
+                    <p class="sub-title-text">Type your name and age</p>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <img
+                    *ngIf="example.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-down.svg"
+                  />
+                  <img
+                    *ngIf="!example.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-up.svg"
+                  />
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <app-table-common
+                [dataset]="DIGITAL_PRODUCT_PURCHASES_DATA"
+                [columns]="productPurchasesColumns"
+                [isOddRowsChangeColor]="true"
+                [isAction]="false"
+              >
+              </app-table-common>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+              class="custom-header"
+              hideToggle="true"
+              #example2
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="title-section">
+                    <p class="title-text">Token Usage</p>
+                    <p class="sub-title-text">List of Token Usage</p>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <img
+                    *ngIf="example2.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-down.svg"
+                  />
+                  <img
+                    *ngIf="!example2.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-up.svg"
+                  />
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <app-table-common
+                [dataset]="TOKEN_USAGE_DATA"
+                [columns]="tokenUsageColumns"
+                [isOddRowsChangeColor]="true"
+                [isAction]="false"
+              >
+              </app-table-common>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+              class="custom-header"
+              hideToggle="true"
+              #example3
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="title-section">
+                    <p class="title-text">Private Chat</p>
+                    <p class="sub-title-text">
+                      Showing history and content of chat
+                    </p>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <img
+                    *ngIf="example3.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-down.svg"
+                  />
+                  <img
+                    *ngIf="!example3.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-up.svg"
+                  />
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <app-table-common
+                (buttonClickEmitter)="viewChat($event)"
+                [dataset]="PRIVATE_CHAT_DATA"
+                [columns]="privateChatColumns"
+                [isOddRowsChangeColor]="true"
+                [isAction]="false"
+              >
+              </app-table-common>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+        <div class="ml-1">
+          <mat-accordion [multi]="true">
+            <mat-expansion-panel
+              #example4
+              hideToggle="true"
+              class="custom-header"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="title-section">
+                    <p class="title-text">Live Session Attendance</p>
+                    <p class="sub-title-text">
+                      List of Live Session Attendance
+                    </p>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <img
+                    *ngIf="example4.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-down.svg"
+                  />
+                  <img
+                    *ngIf="!example4.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-up.svg"
+                  />
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <app-table-common
+                [dataset]="LIVE_SESSION_ATTENDANCE_DATA"
+                [columns]="liveSessionAttendanceColumns"
+                [isOddRowsChangeColor]="true"
+                [isAction]="false"
+              >
+              </app-table-common>
+            </mat-expansion-panel>
+            <mat-expansion-panel
+              #example5
+              hideToggle="true"
+              class="custom-header"
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="title-section">
+                    <p class="title-text">Physical Goods Sent</p>
+                    <p class="sub-title-text">List of Physical goods sent</p>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <img
+                    *ngIf="example5.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-down.svg"
+                  />
+                  <img
+                    *ngIf="!example5.expanded"
+                    src="../../../../../../assets/images/mat-expansion-arrow-up.svg"
+                  />
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <app-table-common
+                [dataset]="PHYSICAL_GOODS_DATA"
+                [columns]="physicalGoodsSentColumns"
+                [isAction]="false"
+                [isOddRowsChangeColor]="true"
+              >
+              </app-table-common>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="User Reports">
+      <ng-template mat-tab-label>
+        <div *ngIf="thirdTabName == 'User Reports'" class="mat-tab-style">
+          User Reports
+        </div>
+      </ng-template>
+
+      <div class="report-section">
+        <div class="report-section-text">
+          <p class="report-text">Report List</p>
+          <p class="report-description">
+            List of reports submitted by other members about the profile.
+          </p>
+        </div>
+
+        <mat-form-field
+          id="filterSelect"
+          #filterSelect
+          appearance="outline"
+          *ngFor="let reportFilter of reportsFilters | slice : 0 : 1"
+        >
+          <mat-label>
+            <mat-icon aria-hidden="false" fontIcon="filter_list"></mat-icon>
+            filters
+          </mat-label>
+          <mat-select (selectionChange)="applyReportFilter($event)">
+            <mat-option
+              *ngFor="let op of reportFilter.options"
+              [value]="op['value']"
+            >
+              {{ op["value"] }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <app-table-common
+        (reviewButtonEmitter)="reviewReport($event)"
+        [dataset]="REPORT_LIST_DATA_FILTERED"
+        [columns]="reportsListColumns"
+        [isAction]="false"
+        [isOddRowsChangeColor]="true"
+        [isReviewAction]="true"
+        [isChangeSize]="true"
+      >
+      </app-table-common>
+    </mat-tab>
+  </mat-tab-group>
+</div>

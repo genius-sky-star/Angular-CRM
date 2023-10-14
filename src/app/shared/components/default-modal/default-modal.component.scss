@@ -1,0 +1,61 @@
+:host {
+  min-width: 400px;
+  min-height: 400px;
+  display: block;
+}
+
+mat-card {
+  min-width: 400px;
+  min-height: 400px;
+}
+.card-message {
+  margin: 1.5rem 3rem;
+  text-align: center;
+  font-size: 24px;
+  word-wrap: break-word!important;
+}
+
+.title-header {
+  color: #333333;
+  font-size: 24px;
+  font-family: "Hemi Head,Bold Italic";
+  font-weight: 400;
+  word-wrap: break-word;
+  width: 100%;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.content {
+  width: 600px;
+  padding: 20px 0;
+  .success-header {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    margin: 1.5rem 0;
+    font-family: "Hemi Head,Bold Italic";
+
+}
+.success-image-container {
+  width: 100%;
+  .success-image {
+      margin: 0 auto;
+  }
+}
+.success-message {
+  margin: 1.5rem 3rem;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Hemi Head,Bold Italic";
+  .close-btn {
+    background-color: #c7325f;
+    padding: 1rem;
+    font-family: "Hemi Head,Bold Italic";
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #fff !important;
+}
+}
+}
+

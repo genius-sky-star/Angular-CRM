@@ -1,0 +1,32 @@
+<div
+    *ngIf="currentMenuItems"
+    class="menu-container flex justify-center hemi-head-bold-italic"
+  >
+    <div class="section-content container">
+      <div class="menu-inner-wrapper">
+        <h2 *ngIf="currentMenuItems?.title" class="role">{{currentMenuItems.title}}</h2>
+
+        <ul class="navigation navigation-start">
+          <li *ngFor="let menuItem of currentMenuItems.main">
+            <a
+              [routerLink]="[menuItem.url]"
+              routerLinkActive="active"
+              >{{menuItem.text}}</a
+            >
+          </li>
+
+        </ul>
+
+        <ul *ngIf="currentMenuItems.secondary" class="navigation navigation-end">
+          <li *ngFor="let menuItem of currentMenuItems.secondary">
+            <a
+              [routerLink]="[menuItem.url]"
+              routerLinkActive="active"
+              >{{menuItem.text}}</a
+            >
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,42 @@
+<main class="flex flex-col h-full">
+  <app-header></app-header>
+  <mat-card class="shadow-none content flex-1 grow transparent flex items-center justify-center mx-auto ">
+    <div class="card-content-container w-2/3 flex flex-col content-center">
+      <mat-card-title class="text-4xl tracking-tight text-white font-bold text-center hemi-head-bold-italic">Login</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <label class="text-2xl roboto-regular block mb-1 mt-6 text-white" for="email">
+            Email
+          </label>
+          <input formControlName="email" class="appearance-none border-2 rounded w-full py-3 px-3 leading-tight border-gray-300 bg-ggg-gray-100 focus:outline-none focus:border-primary focus:bg-white text-dark pr-16 mb-6" id="email" type="text" autocomplete="off" autofocus />
+
+          <!-- <label class="font-medium block mb-1 text-white" for="password">
+            Password
+          </label>
+          <div class="relative w-full mb-6">
+            <div class="absolute inset-y-0 right-0 flex items-center px-2">
+              <input class="hidden js-password-toggle" id="toggle" type="checkbox" />
+              <label class="cursor-pointer js-password-label flex" for="toggle">
+                <i class="material-icons">visibility_off</i>
+              </label>
+            </div>
+            <input formControlName="password" class="appearance-none border-2 rounded w-full py-3 px-3 leading-tight border-gray-300 bg-ggg-gray-100 focus:outline-none focus:border-indigo-500 focus:bg-white text-white pr-16 js-password" id="password" type="password" autocomplete="off"
+            />
+          </div> -->
+
+          <p *ngIf="error" class="error">
+            {{ error }}
+          </p>
+
+            <div class="button-container">
+              <button [disabled]="!form || form.invalid" class="continue-button" type="submit">Continue</button>
+            </div>
+
+
+        </form>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  <!-- <app-footer></app-footer> -->
+
+</main>

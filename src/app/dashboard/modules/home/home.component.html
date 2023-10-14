@@ -1,0 +1,226 @@
+<div class="container">
+  <!-- <svg width="500" height="500"></svg> -->
+  <div class="bg-white mt-4 mb-4 rounded border-1 border-gray">
+    <div class="flex items-center justify-center">
+      <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+      <input
+        placeholder="Global search"
+        class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+        type="text"
+      />
+    </div>
+  </div>
+  <div class="grid grid-cols-2 w-full rounded">
+    <div class="mr-1">
+      <div class="mb-6 px-2 py-4 bg-white rounded">
+        <div class="flex">
+          <app-analytic-header
+            route="/dashboard/user/members"
+            class="flex-grow hemi-head-bold-italic"
+            title="Members Analytics"
+            description="Showing analysis for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-4">
+          <app-count-summary
+            route="/dashboard/user/members/total-members"
+            *ngFor="let memberCount of memberAnalyticData"
+            [title]="memberCount.title"
+            [count]="memberCount.count"
+            [direction]="memberCount.direction"
+            class="mr-3"
+          ></app-count-summary>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Streamer Analytics"
+            description="Showing analysis for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-4">
+          <app-count-summary
+            *ngFor="let memberCount of streamerAnalyticData"
+            [title]="memberCount.title"
+            [count]="memberCount.count"
+            [direction]="memberCount.direction"
+            class="mr-3"
+          ></app-count-summary>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="User Demographic"
+            description="Showing demographic of members and streamers"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-4">
+          <app-world-map
+            class="w-96 h-72 justify-end items-center inline-flex"
+          ></app-world-map>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Token Analytics"
+            description="Showing analysis of total token for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+
+        <div class="flex mt-8 justify-around">
+          <app-token-analytics
+            *ngFor="let tokenMember of tokenAnalyticsData"
+            [tokenTitle]="tokenMember.title"
+            [pourcentage]="tokenMember.pourcentage"
+            [total]="tokenMember.total"
+            [vector]="tokenMember.vector"
+          ></app-token-analytics>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Estimate Analysis"
+            description="Showing analysis of total token for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-8 justify-around">
+          <app-estimate-analysis
+            *ngFor="let estimateMember of estimateAnalysisData"
+            [estimateTitle]="estimateMember.title"
+            [pourcentage]="estimateMember.pourcentage"
+            [total]="estimateMember.total"
+            [vector]="estimateMember.vector"
+          ></app-estimate-analysis>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="G3 Employees Analytics"
+            description="Showing analysis for the month of July"
+          ></app-analytic-header>
+          <app-time-filter></app-time-filter>
+        </div>
+        <div class="flex mt-4">
+          <app-doughnut-chart class="mx-auto"></app-doughnut-chart>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Overview Analysis"
+            description="Showing analysis for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-4">
+          <app-overview-analysis
+            *ngFor="let overview of overviewAnalysisData"
+            [overviewTitle]="overview.title"
+            [total]="overview.total"
+            [name]="overview.name"
+          ></app-overview-analysis>
+        </div>
+      </div>
+    </div>
+
+    <div class="ml-1">
+      <div class="pl-2 pb-4 rounded">
+        <div class="flex mb-6 space-content-around">
+          <app-line-chart
+            *ngFor="let config of topStreamersData"
+            [lineChartConfig]="config"
+            class="ml-1 mr-1 min-w-0 flex-1"
+          ></app-line-chart>
+          <!-- <app-line-chart class="min-w-0 flex-1"></app-line-chart>
+          <app-line-chart class="ml-3 min-w-0 flex-1"></app-line-chart> -->
+        </div>
+        <div class="flex mb-6 space-content-around">
+          <app-line-chart
+            *ngFor="let config of topStreamersData"
+            [lineChartConfig]="config"
+            class="ml-1 mr-1 min-w-0 flex-1"
+          ></app-line-chart>
+        </div>
+
+        <div class="mt-6 bg-white rounded px-2 py-4 w-full">
+          <div class="flex">
+            <app-analytic-header
+              class="flex-grow hemi-head-bold-italic"
+              title="Earnings"
+              description="Showing number of cash paid for token purchase"
+            ></app-analytic-header>
+            <app-time-filter></app-time-filter>
+          </div>
+          <app-line-chart
+            [lineChartConfig]="earningsConfig"
+            class="mr-3"
+          ></app-line-chart>
+        </div>
+
+        <div class="mt-6 bg-white rounded pl-2 py-4 w-full">
+          <div class="flex">
+            <app-analytic-header
+              class="flex-grow hemi-head-bold-italic"
+              title="Top 10 Streamers"
+              description="Showing analysis for the month of July"
+            ></app-analytic-header>
+            <app-time-filter></app-time-filter>
+          </div>
+          <app-bar-chart></app-bar-chart>
+        </div>
+
+        <div class="mt-6 bg-white rounded px-2 py-4 w-full">
+          <div class="flex">
+            <app-analytic-header
+              class="flex-grow hemi-head-bold-italic"
+              title="Top 10 Highest Spenders"
+              description="Showing analysis for the month of July"
+            ></app-analytic-header>
+            <app-time-filter></app-time-filter>
+          </div>
+          <app-bar-chart></app-bar-chart>
+        </div>
+
+        <div class="mt-6 bg-white rounded px-2 py-4 w-full">
+          <div class="flex mb-6">
+            <app-analytic-header
+              class="flex-grow hemi-head-bold-italic"
+              title="Scheduled Streams"
+              description="Showing analysis for the month of July"
+            ></app-analytic-header>
+            <app-time-filter [selected]="selected"></app-time-filter>
+          </div>
+
+          <app-table-common
+            [columns]="tableColumns"
+            [dataset]="streamsDataSource"
+            [isAction]="false"
+          >
+          </app-table-common>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

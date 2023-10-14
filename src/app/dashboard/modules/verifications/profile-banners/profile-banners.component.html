@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="flex mt-4 items-center">
+    <a
+      [routerLink]="['/dashboard/verifications']"
+      class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+    >
+      Verifications
+    </a>
+    <img
+      src="../../../../../assets/images/arrow-right.svg"
+      class="w-5 h-5 relative"
+    />
+    <!-- <a
+      [routerLink]="['/dashboard/user/streamers']"
+      class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+    >
+      Streamers
+    </a> -->
+    <div
+      class="ml-2 text-black text-opacity-90 text-base roboto-regular leading-normal tracking-tight"
+    >
+      Profile Banners
+    </div>
+  </div>
+
+  <div class="bg-white mt-4 mb-7 rounded border-1 border-gray">
+    <div class="flex items-center justify-center">
+      <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+      <input
+        placeholder="Search by: Game Tag, Full Name"
+        class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <div
+    style="width: 70%; background-color: #ffffff !important"
+    class="pt-8 pr-3 pl-3"
+  >
+    <app-verification-table
+      [dataset]="data"
+      [columns]="tableColumns"
+    ></app-verification-table>
+  </div>
+</div>

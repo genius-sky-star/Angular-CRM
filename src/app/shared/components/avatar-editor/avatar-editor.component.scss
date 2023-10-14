@@ -1,0 +1,73 @@
+// .image-container {
+//   overflow: hidden;
+//   width: 100% !important;
+//   height: 100% !important;
+// }
+.video-player {
+  height: 100% !important;
+  width: 100vw !important;
+}
+
+.close-icon {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.video-header {
+  background-color: black;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-title {
+  font-size: 20px;
+  color: #fff;
+}
+
+.image-container {
+  overflow: hidden;
+  width: 916px; /* or whatever size you want */
+  height: 400px; /* or whatever size you want */
+  position: relative;
+}
+
+.image-container img {
+  transition: transform 0.3s ease-in-out;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+  transform-origin: center;
+}
+
+.mat-mdc-slider {
+  width: 300px;
+}
+
+::ng-deep .mat-mdc-slider .mdc-slider__track--active {
+  background-color: #fff;
+  height: 2px !important;
+  display: none !important;
+}
+::ng-deep .mat-mdc-slider .mdc-slider__track--inactive {
+  // background-color: #fff;
+  height: 2px !important;
+  opacity: 100;
+}
+
+::ng-deep .mdc-slider .mdc-slider__track--inactive::before {
+  background-color: #fff;
+}
+
+::ng-deep .mat-mdc-slider .mdc-slider__thumb-knob {
+  background-color: #c7325f !important;
+  border-color: #c7325f !important;
+}

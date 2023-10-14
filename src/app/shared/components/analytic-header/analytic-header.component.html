@@ -1,0 +1,9 @@
+<div>
+  <h1 class="text-gray-500 text-xl" (click)="emitClickEvent()">{{ title }}</h1>
+  <p
+    [ngClass]="description ? 'block' : 'invisible'"
+    class="text-gray-500 text-xs font-light"
+  >
+    {{ description }}
+  </p>
+</div>

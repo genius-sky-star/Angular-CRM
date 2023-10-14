@@ -1,0 +1,13 @@
+:host {
+  @apply bg-white rounded-lg p-3 block;
+}
+
+.avatar-info {
+  img {
+    height: 25px;
+  }
+
+  .avatar-name {
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,23 @@
+<div
+  class="flex mr-3.5 w-48 h-24 relative bg-white rounded-md shadow border border-slate-100"
+>
+  <div class="w-12 h-12 left-2.5 mt-5 absolute rounded-3xl bg-pink-700/[0.05]">
+    <img
+      class="top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 absolute"
+      [src]="'/assets/images/' + name + '.svg'"
+    />
+  </div>
+
+  <div class="flex flex-col">
+    <p
+      class="left-16 top-6 absolute text-black text-base hemi-head-bold-italic tracking-tight"
+    >
+      {{ overviewTitle }}
+    </p>
+    <p
+      class="left-16 top-12 absolute opacity-70 text-black text-opacity-90 text-lg hemi-head-bold-italic"
+    >
+      {{ total }}
+    </p>
+  </div>
+</div>

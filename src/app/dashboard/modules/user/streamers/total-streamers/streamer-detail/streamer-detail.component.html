@@ -1,0 +1,68 @@
+<app-list-common-sidenav
+  [sidenavOpened]="sidenavOpened"
+  [data]="historyData"
+  [sideNavTitle]="sideNavTitle"
+  [subtitle]="subtitle"
+  [action]="action"
+  (sidenavOpenedChange)="sidenavOpenedChange($event)"
+>
+  <ng-container panel></ng-container>
+
+  <ng-container main>
+    <div class="container">
+      <div class="flex mt-4 items-center">
+        <a
+          [routerLink]="['/dashboard/home']"
+          class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+        >
+          Admin Dashboard
+        </a>
+        <img
+          src="../../../../../assets/images/arrow-right.svg"
+          class="w-5 h-5 relative"
+        />
+        <a
+          [routerLink]="['/dashboard/user/streamers']"
+          class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+        >
+          Streamers
+        </a>
+        <img
+          src="../../../../../assets/images/arrow-right.svg"
+          class="w-5 h-5 relative"
+        />
+        <a
+          [routerLink]="['/dashboard/user/streamers/total-streamers']"
+          class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+        >
+          Total Streamers
+        </a>
+        <img
+          src="../../../../../assets/images/arrow-right.svg"
+          class="w-5 h-5 relative"
+        />
+
+        <div
+          class="ml-2 text-black text-opacity-90 text-base roboto-regular leading-normal tracking-tight"
+        >
+          {{ userData.userName }}
+        </div>
+      </div>
+
+      <div class="bg-white mt-4 mb-7 rounded border-1 border-gray">
+        <div class="flex items-center justify-center">
+          <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+          <input
+            placeholder="Global search"
+            class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+            type="text"
+          />
+        </div>
+      </div>
+      <app-user-info [userData]="userData"></app-user-info>
+      <app-user-detail-tab
+        (buttonAction)="onTableAction($event)"
+      ></app-user-detail-tab>
+    </div>
+  </ng-container>
+</app-list-common-sidenav>

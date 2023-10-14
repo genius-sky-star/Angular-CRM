@@ -1,0 +1,20 @@
+<mat-sidenav-container>
+  <mat-sidenav class="p-3" [position]="position" [opened]="sidenavOpened" (openedChange)="onSidebarStateChange($event)">
+    <div class="content">
+      <mat-label class="header-back-btn" (click)="closeSideMenu()">
+        <mat-icon>arrow_back</mat-icon>
+        <p> Back</p>
+      </mat-label>
+      <h1 class="text-center sidebar-header"
+        [ngClass]="(sideNavTitle == 'Create New Role' || sideNavTitle == 'Create An Admin') ? 'font-hemi-head' : ''">
+        {{sideNavTitle}}</h1>
+    </div>
+    
+    <ng-content select="[panel]"></ng-content>
+  </mat-sidenav>
+  <section class="main container pt-8">
+
+    <ng-content select="[main]"></ng-content>
+
+  </section>
+</mat-sidenav-container>

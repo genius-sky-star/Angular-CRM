@@ -1,0 +1,17 @@
+::ng-deep {
+  .apexcharts-grid {
+    display: none !important;
+  }
+  .apexcharts-grid-borders {
+    display: none !important;
+  }
+  .apexcharts-series {
+    .apexcharts-bar-area {
+      background-color: black;
+    }
+  }
+
+  .apexcharts-tooltip-title {
+    display: none;
+  }
+}

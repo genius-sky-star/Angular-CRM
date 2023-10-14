@@ -1,0 +1,93 @@
+::ng-deep.mat-mdc-menu-panel.mat-mdc-menu-panel {
+    .mat-mdc-menu-content {
+        .mdc-list-item {
+            .mdc-list-item__primary-text {
+                display: flex;
+                align-items: center;
+                span {
+                    margin-right: 1rem;
+                    color: rgba(0, 0, 0, 0.6);
+                    font-size: 24px;
+                    font-family: "Roboto-Regular";
+                    font-weight: 400;
+                    word-wrap: break-word;
+                }
+                .edit-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/edit.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .login-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/login.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .danger-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/danger-1.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .suspend-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/suspend.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .trash-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/delete-menu.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+        .mdc-list-item:hover {
+            background-color: #efe9ea;
+            .mdc-list-item__primary-text {
+                display: flex;
+                align-items: center;
+                span {
+                    margin-right: 1rem;
+                    color: #c7325f;
+                    font-size: 24px;
+                    font-family: "Roboto-Regular";
+                    font-weight: 400;
+                    word-wrap: break-word;
+                }
+                .edit-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/edit-pink.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .login-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/login-pink.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .danger-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/danger-pink.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .suspend-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/suspend-pink.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+                .trash-icon {
+                    margin-right: 1rem;
+                    background-image: url("../../../../assets/images/delete-pink.svg");
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+}

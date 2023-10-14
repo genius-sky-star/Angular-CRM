@@ -1,0 +1,51 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    class="p-3"
+    [position]="position"
+    [opened]="sidenavOpened"
+    (openedChange)="onSidebarStateChange($event)"
+  >
+    <div class="container">
+      <div class="add-token-container">
+        <div class="back-button">
+          <img
+            src="../../../../assets/images/arrow-left-add-token.svg"
+            alt="arrow left"
+          />
+          <a (click)="closeSideMenu()">Back</a>
+        </div>
+        <span class="add-token-text"> Add Token</span>
+      </div>
+      <div class="elements-container">
+        <img class="" [src]="'../../../../assets/images/' + image" />
+        <p>{{ username }}</p>
+        <form>
+          <label>Add Token</label>
+          <input
+            class="border-none add-token-input"
+            type="text"
+            matInput
+            placeholder="Enter no of token"
+          />
+          <mat-hint>
+            <img src="../../../../assets/images/info-circle.svg" />
+            If you make a mistake, just add the amount of tokens with a - sign
+            in front to take them back (eg. -1000)
+          </mat-hint>
+
+          <div class="cancel-update-buttons">
+            <button class="cancel-stroked" (click)="closeSideMenu()">
+              Cancel
+            </button>
+            <button class="update-flat">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <ng-content select="[panel]"></ng-content>
+  </mat-sidenav>
+  <section class="main container">
+    <ng-content select="[main]"></ng-content>
+  </section>
+</mat-sidenav-container>

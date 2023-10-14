@@ -1,0 +1,3 @@
+button:not(.mat-mdc-icon-button, .online-toggle, ) {
+  @apply rounded-md h-10 shadow-md bg-primary text-white !important;
+}

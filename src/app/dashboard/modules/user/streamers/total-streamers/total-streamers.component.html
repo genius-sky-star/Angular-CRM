@@ -1,0 +1,85 @@
+<app-edit-sidenav-bar
+  [sidenavOpened]="sidenavOpened"
+  [userData]="userData"
+  (sidenavOpenedChange)="sidenavOpenedChange($event)"
+>
+  <ng-container panel> </ng-container>
+  <ng-container main>
+    <div class="container">
+      <div class="flex mt-4 items-center">
+        <a
+          [routerLink]="['/dashboard/home']"
+          class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+        >
+          Admin Dashboard
+        </a>
+        <img
+          src="../../../../../assets/images/arrow-right.svg"
+          class="w-5 h-5 relative"
+        />
+        <a
+          [routerLink]="['/dashboard/user/streamers']"
+          class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+        >
+          Streamers
+        </a>
+        <img
+          src="../../../../../assets/images/arrow-right.svg"
+          class="w-5 h-5 relative"
+        />
+        <div
+          class="ml-2 text-black text-opacity-90 text-base roboto-regular leading-normal tracking-tight"
+        >
+          Total Streamers
+        </div>
+      </div>
+
+      <div class="bg-white mt-4 mb-7 rounded border-1 border-gray">
+        <div class="flex items-center justify-center">
+          <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+          <input
+            placeholder="Global search"
+            class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+            type="text"
+          />
+        </div>
+      </div>
+
+      <div class="mr-1">
+        <div class="mb-6 px-2 py-6 bg-white rounded-md">
+          <div class="flex">
+            <app-analytic-header
+              route="/dashboard/user/streamers/total-streamers"
+              class="flex-grow hemi-head-bold-italic"
+              title="Streamers Analytics"
+              description="Showing analysis of Total Streamers for the month of July"
+            ></app-analytic-header>
+            <app-time-filter [selected]="selected"></app-time-filter>
+          </div>
+          <div class="flex mt-4 ml-3.5">
+            <app-count-summary
+              *ngFor="let streamerCount of totalStreamersCountData"
+              titleStyle="total-streamers"
+              [title]="streamerCount.title"
+              [count]="streamerCount.count"
+              [direction]="streamerCount.direction"
+              class="mr-6"
+            ></app-count-summary>
+          </div>
+        </div>
+
+        <app-streamer-table
+          (action)="onTableAction($event)"
+          (usernameClickEmitter)="navigateToStreamerProfile($event)"
+          [dataset]="data"
+          [columns]="tableColumns"
+          [isAction]="true"
+          isStreamer="main"
+          tableHeaderBackgroundColor="changetablerowcolor"
+          matheadercolor="none"
+        >
+        </app-streamer-table>
+      </div>
+    </div>
+  </ng-container>
+</app-edit-sidenav-bar>

@@ -1,0 +1,61 @@
+<div class="player-content">
+  <div class="video-header">
+    <p class="video-title">
+      {{ imageTitle }}
+    </p>
+    <div class="close-icon" (click)="closeDialog()">
+      <img class="btn-delete" src="../../../../assets/images/close.svg" />
+    </div>
+
+    <!-- <mat-icon class="close-icon" fontIcon="close" (click)="closeDialog()"></mat-icon> -->
+  </div>
+  <div class="image-container">
+    <img
+      *ngIf="imageUrl"
+      class="video-player"
+      [src]="imageUrl"
+      alt=""
+      [style.transform]="getTransform()"
+    />
+  </div>
+  <!-- <video *ngIf="imageUrl" class="video-player" controls>
+    <source [src]="imageUrl" type="video/mp4" />
+    <source [src]="imageUrl" type="video/ogg" />
+  </video> -->
+  <div
+    class="bg-black pt-3 pb-2 pl-10 pr-10"
+    style="display: flex; justify-content: space-between; align-items: center"
+  >
+    <button (click)="onRotate()">
+      <img src="../../../../assets/images/anti-rotate.svg" alt="" />
+    </button>
+    <div class="flex">
+      <button class="mr-6" (click)="onZoomOut()">
+        <img src="../../../../assets/images/search-zoom-out.svg" alt="" />
+      </button>
+      <div class="w-80">
+        <mat-slider class="w-80" [max]="2" [min]="1" [step]="0.1">
+          <input matSliderThumb [(ngModel)]="zoomValue" #slider />
+        </mat-slider>
+      </div>
+      <button class="ml-6" (click)="onZoomIn()">
+        <img src="../../../../assets/images/search-zoom-in.svg" alt="" />
+      </button>
+    </div>
+    <button
+      class="w-28 h-8 rounded-sm"
+      style="background-color: #d32f2f; color: white; font-family: Roboto"
+      (click)="onReject()"
+    >
+      Reject
+    </button>
+    <button
+      class="w-28 h-8 rounded-sm"
+      style="background-color: #2e7d32; color: white; font-family: Roboto"
+      (click)="onApprove()"
+    >
+      Approve
+    </button>
+    <!-- <img #imageElement src="" alt=""> -->
+  </div>
+</div>

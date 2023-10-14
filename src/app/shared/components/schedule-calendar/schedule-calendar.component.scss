@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.navigator {
+  margin-right: 10px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.current-date {
+  width: -webkit-fill-available;
+  font-size: 18px;
+  font-family: "Hemi Head,Bold Italic";
+}
+
+.buttons {
+  display: inline-flex;
+  gap: 10px;
+}
+
+button {
+  background-color: #fceeed;
+
+  color: rgba(0, 0, 0, 0.87);
+  border: 0;
+  // padding: 0.5rem 1rem;
+  text-align: center;
+  width: 51.543px;
+  height: 29.88px;
+  font-size: 10.458px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 1px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+button:last-child {
+  margin-right: 0;
+}
+
+button.selected {
+  background-color: #c7325f;
+  color: white;
+  opacity: 1;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+// button:first-child {
+// border-top-left-radius: 30px;
+// border-bottom-left-radius: 30px;
+// }
+
+// button:last-child {
+// border-top-right-radius: 30px;
+// border-bottom-right-radius: 30px;
+// }
+
+button:hover {
+  background-color: #c7325f;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navigator {
+  display: none;
+}
+
+::ng-deep .calendar_default_cell_inner {
+  background-color: white !important;
+  border-color: rgb(245, 245, 245) !important;
+}

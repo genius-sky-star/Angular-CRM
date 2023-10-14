@@ -1,0 +1,207 @@
+<div class="header">
+  <div class="top-bar justify-center bg-ggg-gray">
+    <div class="section-content container">
+      <div class="header-logo">
+        <span *ngIf="isLoggedIn" (click)="isMenuOpened = !isMenuOpened">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M18.8572 23.8571V30.2857C18.8572 30.8661 18.6451 31.3683 18.221 31.7924C17.7969 32.2165 17.2947 32.4286 16.7143 32.4286H8.14286C7.5625 32.4286 7.06027 32.2165 6.63616 31.7924C6.21205 31.3683 6 30.8661 6 30.2857V23.8571C6 23.2768 6.21205 22.7745 6.63616 22.3504C7.06027 21.9263 7.5625 21.7143 8.14286 21.7143H16.7143C17.2946 21.7143 17.7969 21.9263 18.221 22.3504C18.6451 22.7745 18.8572 23.2768 18.8572 23.8571ZM18.8572 11V17.4286C18.8572 18.009 18.6451 18.5112 18.221 18.9353C17.7969 19.3594 17.2947 19.5715 16.7143 19.5715H8.14286C7.5625 19.5715 7.06027 19.3594 6.63616 18.9353C6.21205 18.5112 6 18.009 6 17.4286V11C6 10.4197 6.21205 9.91745 6.63616 9.49334C7.06027 9.06923 7.5625 8.85718 8.14286 8.85718H16.7143C17.2946 8.85718 17.7969 9.06923 18.221 9.49334C18.6451 9.91745 18.8572 10.4197 18.8572 11ZM33.8572 23.8571V30.2857C33.8572 30.8661 33.6451 31.3683 33.221 31.7924C32.7969 32.2165 32.2946 32.4286 31.7143 32.4286H23.1429C22.5625 32.4286 22.0603 32.2165 21.6362 31.7924C21.2121 31.3683 21 30.8661 21 30.2857V23.8571C21 23.2768 21.2121 22.7745 21.6362 22.3504C22.0603 21.9263 22.5625 21.7143 23.1429 21.7143H31.7143C32.2946 21.7143 32.7969 21.9263 33.221 22.3504C33.6451 22.7745 33.8572 23.2768 33.8572 23.8571ZM33.8572 11V17.4286C33.8572 18.009 33.6451 18.5112 33.221 18.9353C32.7969 19.3594 32.2946 19.5715 31.7143 19.5715H23.1429C22.5625 19.5715 22.0603 19.3594 21.6362 18.9353C21.2121 18.5112 21 18.009 21 17.4286V11C21 10.4197 21.2121 9.91745 21.6362 9.49334C22.0603 9.06923 22.5625 8.85718 23.1429 8.85718H31.7143C32.2946 8.85718 32.7969 9.06923 33.221 9.49334C33.6451 9.91745 33.8572 10.4197 33.8572 11Z"
+              fill="white"
+            />
+          </svg>
+        </span>
+        <img
+          class="app-logo h-10 ml-2 mr-2"
+          src="/assets/images/logo_red.png"
+          alt="logo text"
+        />
+      </div>
+      <div class="header-right-block">
+        <h2 *ngIf="!isLoggedIn" class="text-white text-lg roboto-regular">
+          G3 Administration
+        </h2>
+        <ng-container *ngIf="isLoggedIn">
+          <mat-menu
+            xPosition="before"
+            #appMenu="matMenu"
+            class="header-menu text-white text-sm bg-ggg-gray border-0"
+          >
+            <ng-template class="border-0" matMenuContent let-name="name">
+              <div
+                class="flex text-white mt-3.5 ml-2 text-sm font-extralight mb-3 hemi-head-bold-italic"
+              >
+                <span
+                  class="align-middle leading-3 mr-2 padding-3 bg-primary text-center rounded-full h-8 w-8 inline-flex"
+                >
+                  <mat-icon class="m-auto">person</mat-icon>
+                </span>
+                Welcome back,
+                <br />
+                Admin User
+              </div>
+              <a (click)="logout()" class="menu-item">
+                <span class="text-blue-400 hover:text-primary">Sign Out</span>
+              </a>
+            </ng-template>
+          </mat-menu>
+          <span class="notification">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M12 21.75C13.1 21.75 14 20.85 14 19.75H10C10 20.85 10.89 21.75 12 21.75ZM18 15.75V10.75C18 7.68 16.36 5.11 13.5 4.43V3.75C13.5 2.92 12.83 2.25 12 2.25C11.17 2.25 10.5 2.92 10.5 3.75V4.43C7.63 5.11 6 7.67 6 10.75V15.75L4 17.75V18.75H20V17.75L18 15.75Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+          <h2
+            class="text-white text-lg ml-8 font-extralight hemi-head-bold-italic"
+          >
+            <span
+              class="align-middle leading-3 mr-1 padding-3 bg-primary text-center rounded-full h-8 w-8 inline-flex"
+            >
+              <mat-icon class="m-auto">person</mat-icon>
+            </span>
+            Admin User
+          </h2>
+          <span
+            class="ml-1 leading-3 menu-dropdown"
+            mat-icon-button
+            [matMenuTriggerFor]="appMenu"
+          >
+            <svg
+              class="text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M17.5127 11.0532L12.5252 15.7454C12.3611 15.9095 12.1642 15.9751 12.0002 15.9751C11.8033 15.9751 11.6064 15.9095 11.4423 15.7782L6.45485 11.0532C6.12672 10.7579 6.12672 10.2657 6.42204 9.93761C6.71735 9.60949 7.20954 9.60949 7.53766 9.9048L12.0002 14.1048L16.4299 9.9048C16.758 9.60949 17.2502 9.60949 17.5455 9.93761C17.8408 10.2657 17.8408 10.7579 17.5127 11.0532Z"
+                fill="white"
+              />
+            </svg>
+          </span>
+        </ng-container>
+      </div>
+      <div class="app-menu" [hidden]="!isMenuOpened">
+        <div class="app-menu-container">
+          <a
+            [routerLink]="['/dashboard/home']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="w-12 h-12 dashboard-image"></div>
+              </div>
+              Dashboard
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/verifications']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="w-12 h-12 verification-image"></div>
+              </div>
+              Verifications
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/user']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="w-12 h-12 users-image"></div>
+              </div>
+              Users
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/archives']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="w-12 h-12 archives-image"></div>
+              </div>
+              Archives
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/payments']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="w-12 h-12 payment-image"></div>
+              </div>
+              Payments
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/support']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="h-12 w-12 support-image"></div>
+              </div>
+              Support
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/site-settings']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="h-12 w-12 site-settings-image"></div>
+              </div>
+              Site Settings
+            </div>
+          </a>
+          <a
+            [routerLink]="['/dashboard/affiliates']"
+            routerLinkActive="active"
+            (click)="isMenuOpened = !isMenuOpened"
+          >
+            <div class="menu-item">
+              <div class="menu-icon-container">
+                <div class="h-12 w-12 affiliates-image"></div>
+              </div>
+              Affiliates
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-sub-menu
+    *ngIf="isLoggedIn"
+    [menu]="currentMenu"
+    (subMenuClicked)="onMenuItemClicked($event)"
+  ></app-sub-menu>
+</div>

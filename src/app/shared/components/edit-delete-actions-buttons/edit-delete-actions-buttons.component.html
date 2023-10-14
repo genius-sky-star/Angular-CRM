@@ -1,0 +1,13 @@
+<div class="flex items-center">
+  <mat-icon mat-icon-button [matMenuTriggerFor]="menu" class="float-right">more_vert</mat-icon>
+  <mat-menu #menu="matMenu">
+    <button class="shadow-none" mat-menu-item (click)="edit()">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button class="delete-btn shadow-none" mat-menu-item (click)="delete()">
+      <mat-icon class="delete-icon">delete</mat-icon>
+      <span class="delete-icon">Delete</span>
+    </button>
+  </mat-menu>
+</div>

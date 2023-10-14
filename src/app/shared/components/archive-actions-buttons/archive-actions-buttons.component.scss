@@ -1,0 +1,20 @@
+.btn-container {
+  display: flex;
+  justify-content: center;
+  .view-btn {
+    width: 119px;
+    height: 24px;
+    background: #0acf83;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Roboto-Regular';
+    font-weight: 500;
+    padding: 0 40%;
+    margin-right: 32px;;
+  }
+}
+
+.btn-delete {
+  cursor: pointer;
+}

@@ -1,0 +1,43 @@
+<!-- <div
+  class="h-44 relative bg-white rounded-xl shadow border border-slate-100 m-1"
+  style="width: 19vw"
+> -->
+
+<div class="pt-6 pb-8 pl-6 flex-col justify-start items-start inline-flex">
+  <div
+    class="text-center text-black text-opacity-90 text-xl hemi-head-bold-italic font-normal leading-loose"
+  >
+    {{ title }}
+  </div>
+  <div class="justify-start items-center inline-flex mb-2">
+    <div
+      [ngClass]="
+        vector === 'red'
+          ? 'text-center text-red-400 text-2xl hemi-head-bold-italic'
+          : 'text-center text-green-400 text-2xl hemi-head-bold-italic'
+      "
+    >
+      {{ pourcentage }}%
+    </div>
+    <img
+      [src]="'/assets/images/vector-' + vector + '.png'"
+      class="ml-3.5"
+      alt=""
+      srcset=""
+    />
+  </div>
+  <div class="justify-start items-center inline-flex mb-4">
+    <div
+      class="ml-1.5 opacity-70 text-center text-slate-950 hemi-head-bold-italic text-3xl font-normal leading-tight"
+      id="time-spent-anaytics-show"
+    >
+      {{ timespent.h }} : {{ timespent.m }} : {{ timespent.s }}
+    </div>
+  </div>
+  <div>
+    <span class="text-green-400 mr-3">{{ spercent }}</span>
+    <label>Over the last 1 month</label>
+  </div>
+</div>
+
+<!-- </div> -->

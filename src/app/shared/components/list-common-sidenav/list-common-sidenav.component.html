@@ -1,0 +1,57 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    class="p-3"
+    [position]="position"
+    [opened]="sidenavOpened"
+    (openedChange)="onSidebarStateChange($event)"
+  >
+    <div class="container">
+      <div class="add-token-container">
+        <div class="back-button">
+          <img
+            src="../../../../assets/images/arrow-left-add-token.svg"
+            alt="arrow left"
+          />
+          <a (click)="closeSideMenu()">Back</a>
+        </div>
+        <span class="add-token-text">{{ sideNavTitle }}</span>
+      </div>
+      <div class="subtitle">{{ subtitle }}</div>
+      <div *ngIf="action === 'Viewers'" class="flex">
+        <app-streamer-table
+          [dataset]="historyData"
+          [columns]="viewListTableColumns"
+          [isPagenator]="false"
+          isStreamer="general"
+          tableHeaderBackgroundColor="changetablerowcolor"
+          matheadercolor="none"
+        >
+        </app-streamer-table>
+      </div>
+      <div *ngIf="action === 'ViewHistory'" class="flex">
+        <app-streamer-table
+          [dataset]="historyData"
+          [columns]="purchaseHistoryTableColumns"
+          [isPagenator]="false"
+          isStreamer="general"
+          tableHeaderBackgroundColor="changetablerowcolor"
+          matheadercolor="none"
+        >
+        </app-streamer-table>
+      </div>
+      <div class="elements-container">
+        <div class="cancel-update-buttons">
+          <button class="cancel-stroked" (click)="closeSideMenu()">
+            Cancel
+          </button>
+          <button class="update-flat">Update</button>
+        </div>
+      </div>
+    </div>
+
+    <ng-content select="[panel]"></ng-content>
+  </mat-sidenav>
+  <section class="main container">
+    <ng-content select="[main]"></ng-content>
+  </section>
+</mat-sidenav-container>

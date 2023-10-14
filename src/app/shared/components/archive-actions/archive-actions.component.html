@@ -1,0 +1,41 @@
+<mat-card class="content">
+    <div *ngIf="!action">
+        <img *ngIf="data.action == 'restore'" class="warning-image" src="../../../../assets/images/restore-warning.svg">
+        <img *ngIf="data.action != 'restore' && data.action != 'recording-delete'" class="warning-image" src="../../../../assets/images/delete-warning.svg">
+        <img *ngIf="data.action == 'recording-delete'" class="warning-image" src="../../../../assets/images/recording-delete-warning.svg">
+    </div>
+    <div class="image-container" *ngIf="!action">
+        <img class="userImage" [src]="'../../../../assets/images/' + data.viewerData.image">
+    </div>
+    <div class="alert-note" *ngIf="!action">
+        <mat-label *ngIf="data.action != 'recording-delete'" class="italic-font">{{data.viewerData.userType}} - {{data.viewerData.source}}</mat-label>
+        <mat-label *ngIf="data.action == 'recording-delete'" class="italic-font">{{data.viewerData.title}}</mat-label>
+        <mat-label class="font-custom">Are you sure you want to {{data.action == 'restore' ? 'Restore' : data.action == 'recording-delete' ? 'delete' : 'Permanently delete'}} this
+            {{data.action == 'recording-delete' ? 'recording' : 'thumbnail'}}?</mat-label>
+    </div>
+
+    <div mat-dialog-actions class="alert-ban-actions" *ngIf="!action">
+        <button class="cancel-stroked border-none" (click)="closeDialog()" [mat-dialog-close]="data.viewerData.userType">
+          Cancel
+        </button>
+        <button class="ban-stroked"(click)="takeAction(data.action)">
+          Delete
+        </button>
+    </div>
+
+    <div *ngIf="action">
+        <div class="success-header">
+            <mat-label class="font-hemi-head">Success</mat-label>
+        </div>
+        <div class="success-image-container" [ngClass]="data.action != 'restore' && data.action != 'recording-delete' ? 'no-margin' : ''">
+            <img class="success-image" src="../../../../assets/images/success-action-icon.svg">
+        </div>
+        <div class="success-message">
+            <mat-label class="font-hemi-head">{{data.viewerData.userType}} - {{data.viewerData.source}} has been
+                {{data.action == 'restore' ? 'Restored' : 'Deleted'}}</mat-label>
+        </div>
+        <div class="success-message">
+            <button class="close-btn" mat-button color="primary" (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+</mat-card>

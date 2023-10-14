@@ -1,0 +1,31 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onAddTokensClick()">
+    <div class="edit-icon"></div>
+    <span> Add Tokens</span>
+  </button>
+  <button mat-menu-item (click)="onLoginClick()">
+    <div class="login-icon"></div>
+    <span>Login</span>
+  </button>
+
+  <button mat-menu-item (click)="onBanClick()">
+    <div class="danger-icon"></div>
+    <span>Ban</span>
+  </button>
+
+  <button mat-menu-item (click)="onSuspendClick()">
+    <div class="suspend-icon"></div>
+    <span>Suspend</span>
+  </button>
+  <button mat-menu-item (click)="onDeleteClick()">
+    <div class="trash-icon"></div>
+    <span>Delete</span>
+  </button>
+</mat-menu>

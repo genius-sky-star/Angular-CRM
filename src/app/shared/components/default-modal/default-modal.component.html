@@ -1,0 +1,42 @@
+<mat-card class="p-5 pb-10" *ngIf="!data.isDeleteConfirmationModal">
+  <img class="m-auto block" width="200px" height="200px" mat-card-image [src]="data.type ? icons[data.type] : icons.info" />
+  <mat-card-title class="m-auto text-center">
+    <h3 class="font-bold">{{data.message}}</h3>
+  </mat-card-title>
+  <mat-card-subtitle class="text-center">{{
+    data.subMessage
+  }}</mat-card-subtitle>
+  <div *ngIf="data.buttons" class="flex justify-center items-center mt-6 mb-3">
+    <ng-container *ngFor="let button of data.buttons">
+      <button
+        (click)="runHandler($event, button)"
+        class="block ml-1 mr-1 h-10 pl-4 pr-4 pt-1 pb-1 text-xs rounded"
+        type="submit"
+      >
+        {{ button.text }}
+      </button>
+    </ng-container>
+  </div>
+</mat-card>
+<mat-card class="content" *ngIf="data.isDeleteConfirmationModal">
+  <div class="success-header">
+    <mat-label class="font-hemi-head">{{ data.title }}</mat-label>
+</div>
+<div class="success-image-container" >
+    <img class="success-image" [src]="data.type ? icons[data.type] : icons.info">
+</div>
+<div class="success-message">
+    <mat-label class="font-hemi-head">{{ data.message }}</mat-label>
+</div>
+<div *ngIf="data.buttons" class="success-message">
+  <ng-container *ngFor="let button of data.buttons">
+    <button
+      (click)="runHandler($event, button)"
+      class="close-btn"
+      type="submit"
+    >
+      {{ button.text }}
+    </button>
+  </ng-container>
+</div>
+</mat-card>

@@ -1,0 +1,15 @@
+<div id="chart">
+  <app-analytic-header
+    route="#"
+    class="flex-grow hemi-head-bold-italic"
+    title="Streamer’s Current Level"
+    description="Showing progress bar toward next level"
+  ></app-analytic-header>
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [plotOptions]="chartOptions.plotOptions"
+    [labels]="chartOptions.labels"
+    [fill]="chartOptions.fill"
+  ></apx-chart>
+</div>

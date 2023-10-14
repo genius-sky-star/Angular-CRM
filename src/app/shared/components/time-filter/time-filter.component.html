@@ -1,0 +1,17 @@
+<div class="flex">
+  <div (click)="onSelect('day')" [ngClass]="selected && selected == 'day' ? 'bg-primary text-white' : 'bg-primary/20'" class="ml-3 rounded-lg text-xs text-black flex items-center justify-center h-8 py-2 px-3 cursor-pointer hover:bg-primary">
+    Day
+  </div>
+
+  <div (click)="onSelect('week')" [ngClass]="selected && selected == 'week' ? 'bg-primary text-white' : 'bg-primary/20'" class="ml-3 rounded-lg text-xs text-black flex items-center justify-center h-8 py-2 px-3 cursor-pointer hover:bg-primary">
+    Week
+  </div>
+
+  <div (click)="onSelect('month')" [ngClass]="selected && selected == 'month' ? 'bg-primary text-white' : 'bg-primary/20'" class="ml-3 rounded-lg text-xs text-black flex items-center justify-center h-8 py-2 px-3 cursor-pointer hover:bg-primary">
+    Month
+  </div>
+
+  <div (click)="onSelect('year')" [ngClass]="selected && selected == 'year' ? 'bg-primary text-white' : 'bg-primary/20'" class="ml-3 rounded-lg text-xs text-black flex items-center justify-center h-8 py-2 px-3 cursor-pointer hover:bg-primary">
+    Year
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="breacrumb-section">
+    <p class="mr-2 breacrumb-text">Archives</p>
+
+    <img src="../../../../../assets/images/arrow-right.svg" />
+    <a
+      class="mr-2 breacrumb-text-selected"
+      [routerLink]="['/dashboard/archives/liveThumbnails']"
+    >
+      Live Thumbnail Archive
+    </a>
+  </div>
+
+  <div class="bg-white mt-4 mb-3 rounded border-1 border-gray">
+    <div class="flex items-center justify-center">
+      <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+      <input
+        placeholder="Search by: Game Tag, Full Name"
+        class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <div class="note-content">
+    <mat-label class="note-title">Live Thumbnails Archive</mat-label>
+    <mat-label class="note-subtitle">
+      This section displays thumbnails from anything that is deleted, by
+      streamers,members and admin.
+    </mat-label>
+  </div>
+
+  <div class="grid grid-cols-3 gap-3 bg-white">
+    <div *ngFor="let user of pagedList">
+      <div>
+        <mat-card>
+          <img
+            class="archive-img"
+            mat-card-image
+            [src]="'/assets/images/' + user.image"
+            alt=""
+          />
+          <div>
+            <div class="user-table">
+              <mat-label> User Type: {{ user.userType }}</mat-label>
+              <mat-label>Source : {{ user.source }} </mat-label>
+            </div>
+          </div>
+          <mat-card-actions class="button-container">
+            <button mat-button class="btn-blue" (click)="archiveView(user)">
+              View details
+            </button>
+            <button
+              mat-button
+              class="btn-red"
+              (click)="archiveAction(user)"
+            >
+              Permanently delete
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <mat-paginator
+    [length]="allUser.length"
+    #paginator
+    [pageSize]="pageSize"
+    (page)="getPaginatorData($event)"
+    [pageSizeOptions]="[6, 9, 12]"
+    showFirstLastButtons="false"
+  >
+  </mat-paginator>
+</div>

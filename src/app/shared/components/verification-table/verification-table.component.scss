@@ -1,0 +1,204 @@
+table {
+  font-family: "Hemi Head,Bold Italic";
+  width: 100%;
+  background-color: #fafafb;
+}
+
+.mat-column-action {
+  flex: 0 0 26% !important;
+}
+
+.mat-mdc-table {
+  table-layout: auto !important;
+  background-color: #fafafb;
+}
+
+.mdc-data-table__row {
+  background-color: white;
+  margin-top: 10px;
+}
+
+.changeRowColor:nth-child(odd) {
+  background-color: #fafafb;
+}
+
+.changeSize {
+  min-height: 103px;
+}
+
+mat-column {
+  padding: 0;
+  margin: 0;
+  border-right: none;
+}
+
+.row.mat-mdc-row {
+  background-color: white;
+  margin-top: 10px;
+}
+
+.mat-header-background-color {
+  // background-color: var(--color-mat-header-row);
+  background-color: transparent;
+}
+
+.mat-header-color {
+  background-color: white;
+}
+
+::ng-deep .mat-sort-header-arrow[style] {
+  margin: 43px 0 0 6px;
+  width: 12px;
+  height: 10px;
+  // Hide default arrow stem
+  .mat-sort-header-stem {
+    display: none;
+  }
+  .mat-sort-header-indicator {
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+
+    // Hide default arrow as its composed of left, right and middle
+    .mat-sort-header-pointer-left,
+    .mat-sort-header-pointer-right,
+    .mat-sort-header-pointer-middle {
+      display: none;
+    }
+  }
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  border-bottom-width: 0;
+  border-bottom-style: none !important;
+}
+
+.no-reports-found-section {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding-top: 131px;
+  padding-bottom: 81px;
+  .no-reports-text {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 24px;
+    font-weight: 500;
+    word-wrap: break-word;
+  }
+}
+
+// My custom ascending arrow
+[aria-sort="ascending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: url("../../../../assets/images/Arrow-Up.svg");
+        top: -1.6em;
+        position: absolute;
+      }
+    }
+  }
+}
+
+My custom descending arrow [aria-sort="descending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: url("../../../../assets/images/Arrow-Down.svg");
+        top: -2.4em;
+        position: absolute;
+      }
+    }
+  }
+}
+
+::ng-deep .mat-mdc-paginator {
+  .mat-paginator-page-size {
+    display: none !important;
+  }
+  .mat-paginator-range-label {
+    display: none !important;
+  }
+
+  .mat-icon-button {
+    border-radius: none;
+    background-color: #00a6ff;
+    height: 40px;
+    width: 40px;
+  }
+
+  .mat-mdc-paginator-container {
+    justify-content: center;
+  }
+  .mat-mdc-paginator-page-size-label {
+    order: 1;
+    font-family: "Hemi Head,Bold Italic";
+  }
+  .mat-mdc-paginator-range-label {
+    order: 2;
+    font-family: "Hemi Head,Bold Italic";
+  }
+
+  .mat-mdc-paginator-navigation-previous {
+    order: 3;
+    font-family: "Hemi Head,Bold Italic";
+  }
+  .mat-mdc-paginator-navigation-next {
+    font-family: "Hemi Head,Bold Italic";
+
+    order: 4;
+  }
+}
+
+.archive-img {
+  margin: 10px 0;
+  height: 8.6vh;
+  width: auto;
+}
+
+.button-style {
+  padding: 4px 37px 4px 37px;
+  background: #0288d1;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+  font-family: "Roboto-Regular";
+}
+
+.Pending {
+  border-radius: 30px;
+  background: var(--Blur-Yellow, rgba(216, 149, 20, 0.1));
+  padding: 4px var(--spacing-scale-space-s, 8px);
+  color: var(--Pending-Yellow, #ed6c02);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.Approved {
+  border-radius: 30px;
+  background: var(--Blur-green, rgba(0, 240, 118, 0.1));
+  padding: 4px var(--spacing-scale-space-s, 8px);
+  color: var(--GREEN, #2e7d32);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.Rejected {
+  border-radius: 30px;
+  background: var(--Blur-red, rgba(233, 32, 32, 0.1));
+  padding: 4px var(--spacing-scale-space-s, 8px);
+  color: var(--Error-red, #d32f2f);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  @apply w-full shadow shadow-gray-300 rounded-lg p-2;
+}
+
+h3:hover{
+  cursor: pointer;
+}
+  
+
+.total-members-style {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 24px;
+  font-family: "Hemi Head,Bold Italic";
+  font-weight: 400;
+  letter-spacing: 0.31px;
+  word-wrap: break-word;
+  padding-top: 10px;
+  padding-left: 12px;
+  margin-bottom: 48px;
+}
+
+.style-total-text{
+  font-family: "Hemi Head,Bold Italic";
+  margin-bottom:28px;
+}

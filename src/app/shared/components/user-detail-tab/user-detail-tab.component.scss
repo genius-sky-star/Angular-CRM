@@ -1,0 +1,97 @@
+#wallet-info-div {
+  width: 70%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#current-earning-analyzer {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+#current-earning {
+  width: 50%;
+}
+
+::ng-deep
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled)
+  .mdc-tab-indicator__content--underline,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
+  .mdc-tab-indicator__content--underline {
+  border-color: red;
+}
+
+::ng-deep .mat-mdc-tab-labels {
+  background-color: white;
+  color: var(--neutral-neutral-8, #4b4d4e);
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: "Hemi Head,Bold Italic";
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+
+  // .mdc-tab__content {
+  //   .mdc-tab__text-label {
+  //     color: #c7325f;
+  //   }
+  // }
+}
+
+::ng-deep
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active
+  .mdc-tab__text-label,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active
+  .mdc-tab__text-label {
+  color: #c7325f;
+}
+
+// ::ng-deep .mdc-tab__text-label {
+//   color: #c7325f;
+// }
+
+#user-detail-sub-tab {
+  ::ng-deep .mat-mdc-tab-labels {
+    background-color: transparent;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ::ng-deep .mat-mdc-tab-list {
+  //   display: flex;
+  //   justify-items: center;
+  //   align-items: center;
+  // }
+}
+
+#half-chat-div {
+  width: 30%;
+}
+
+#user-detail-table {
+  width: 100%;
+}
+
+#streamer-detail-anaysize {
+  width: 60%;
+}
+
+#streamer-detail-chart {
+  width: 40%;
+}
+
+#user-detail-total-time {
+  color: black;
+  text-align: center;
+  font-family: "DS-Digital", sans-serif;
+
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

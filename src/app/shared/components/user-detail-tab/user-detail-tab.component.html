@@ -1,0 +1,240 @@
+<div class="w-full rounded-md">
+  <mat-tab-group>
+    <mat-tab label="Overview">
+      <div class="mt-6 mb-6 flex">
+        <div class="pt-2 pl-4 pr-4 pb-2 mr-3" id="wallet-info-div">
+          <div class="flex">
+            <app-analytic-header
+              route="#"
+              class="flex-grow hemi-head-bold-italic"
+              title="Wallet"
+              description="Showing earnings from the month of July"
+            ></app-analytic-header>
+            <app-time-filter [selected]="selected"></app-time-filter>
+          </div>
+          <div class="mt-2 flex" id="wallet-analyzer">
+            <div
+              class="mr-2 flex d-flex justify-content-between"
+              style="width: 50%"
+            >
+              <div class="flex mt-4" id="current-earning">
+                <app-count-earning-summary
+                  [title]="currentEarning.title"
+                  [count]="'$' + (currentEarning.count | number : '1.2-2')"
+                  [direction]="currentEarning.direction"
+                  [spercent]="currentEarning.mpercent.toString() + '%'"
+                  class="mr-2"
+                ></app-count-earning-summary>
+              </div>
+              <div
+                style="
+                  width: 50%;
+                  display: flex;
+                  justify-content: flex-end;
+                  align-items: center;
+                "
+              >
+                <button class="w-40 h-8 bg-green-700 text-white rounded-md">
+                  Pay
+                </button>
+              </div>
+            </div>
+            <div class="flex ml-2" style="width: 50%">
+              <div class="flex mt-4" style="width: 50%">
+                <app-count-earning-summary
+                  [title]="totalEarned.title"
+                  [count]="'$' + (totalEarned.count | number : '1.2-2')"
+                  [direction]="totalEarned.direction"
+                  [spercent]="totalEarned.mpercent.toString() + '%'"
+                  class="mr-2"
+                ></app-count-earning-summary>
+              </div>
+              <div class="flex mt-4" style="width: 50%">
+                <app-count-earning-summary
+                  [title]="totalCashedOut.title"
+                  [count]="'$' + (totalCashedOut.count | number : '1.2-2')"
+                  [direction]="totalCashedOut.direction"
+                  [spercent]="totalCashedOut.mpercent.toString() + '%'"
+                  class="ml-2"
+                ></app-count-earning-summary>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ml-1 bg-white rounded-md pl-2 pt-2" id="half-chat-div">
+          <app-half-circle-chart></app-half-circle-chart>
+        </div>
+      </div>
+      <div>
+        <div class="bg-white rounded-md pt-4 pl-4 pr-4" id="user-detail-table">
+          <app-analytic-header
+            route="#"
+            class="flex-grow hemi-head-bold-italic"
+            title="Streamers Recordings"
+            description="List of past recordings"
+          ></app-analytic-header>
+          <app-streamer-table
+            (action)="onTableAction($event)"
+            [dataset]="data"
+            [columns]="tableColumns"
+            [isAction]="true"
+            isStreamer="record"
+            tableHeaderBackgroundColor="changetablerowcolor"
+            matheadercolor="none"
+          >
+          </app-streamer-table>
+        </div>
+        <div class="flex mt-5">
+          <div class="w-64" id="streamer-detail-anaysize">
+            <div class="rounded-sm">
+              <div class="mb-6 pt-4 pl-3 pr-3 pb-4 bg-white rounded-md">
+                <div class="flex">
+                  <app-analytic-header
+                    class="flex-grow hemi-head-bold-italic"
+                    title="Token Analytics"
+                    description="Showing analysis of total token for the month of July"
+                  ></app-analytic-header>
+                  <app-time-filter [selected]="selected"></app-time-filter>
+                </div>
+
+                <div class="flex mt-8 justify-around gap-3">
+                  <app-time-spent-analytics
+                    *ngFor="let anaytic of analyticsData"
+                    [title]="anaytic.title"
+                    [pourcentage]="anaytic.pourcentage"
+                    [timespent]="anaytic.timespent"
+                    [vector]="anaytic.vector"
+                    [mpercent]="anaytic.mpercent"
+                  ></app-time-spent-analytics>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-64" id="streamer-detail-chart">
+            <div class="bg-white ml-3 pl-4 pr-4 pt-4 rounded-md">
+              <div class="flex">
+                <app-analytic-header
+                  class="flex-grow hemi-head-bold-italic"
+                  title="Time Spent Online"
+                  description="Total"
+                ></app-analytic-header>
+                <app-time-filter [selected]="selected_t"></app-time-filter>
+              </div>
+              <div>
+                <div class="">
+                  <label id="user-detail-total-time"
+                    >{{ totalTime.h }} : {{ totalTime.m }} :
+                    {{ totalTime.s }}</label
+                  >
+                </div>
+                <label
+                  class="text-gray-500 text-sm flex-grow hemi-head-bold-italic"
+                  >Today</label
+                >
+              </div>
+              <app-streamer-column-chart></app-streamer-column-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Schedules">
+      <ng-template matTabContent>
+        <div class="mt-6">
+          <app-schedule-calendar></app-schedule-calendar>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Recordings">
+      <div class="bg-white rounded-md pt-4 pl-4 pr-4" id="user-detail-table">
+        <app-analytic-header
+          route="#"
+          class="flex-grow hemi-head-bold-italic"
+          title="Streamers Recordings"
+          description="List of past recordings"
+        ></app-analytic-header>
+        <app-streamer-table
+          (action)="onTableAction($event)"
+          [dataset]="data"
+          [columns]="tableColumns"
+          [isAction]="true"
+          isStreamer="record"
+          tableHeaderBackgroundColor="changetablerowcolor"
+          matheadercolor="none"
+        >
+        </app-streamer-table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Fans">
+      <div class="bg-white pt-2 pr-8 pl-8">
+        <div class="pb-5 pt-3">
+          <app-analytic-header
+            route="#"
+            class="flex-grow hemi-head-bold-italic"
+            title="Fan List"
+            description="List of members who have favorited streamer profile"
+          ></app-analytic-header>
+        </div>
+        <app-streamer-table
+          (action)="onTableAction($event)"
+          [dataset]="fansData"
+          [columns]="fansTableColumns"
+          [isAction]="true"
+          isStreamer="gotoprofile"
+          tableHeaderBackgroundColor="changetablerowcolor"
+          matheadercolor="none"
+        >
+        </app-streamer-table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Digital Products">
+      <div id="user-detail-sub-tab">
+        <mat-tab-group>
+          <mat-tab label="Pictures">
+            <div class="bg-white pt-2 pr-8 pl-8">
+              <div class="pb-5 pt-3">
+                <app-analytic-header
+                  route="#"
+                  class="flex-grow hemi-head-bold-italic"
+                  title="Digital Products"
+                  description="List of Digital products and details"
+                ></app-analytic-header>
+              </div>
+              <app-streamer-table
+                (action)="onTableAction($event)"
+                [dataset]="pictureData"
+                [columns]="picturesTableColumns"
+                [isAction]="true"
+                isStreamer="picture"
+                tableHeaderBackgroundColor="changetablerowcolor"
+                matheadercolor="none"
+              >
+              </app-streamer-table></div
+          ></mat-tab>
+          <mat-tab label="Videos">
+            <div class="bg-white pt-2 pr-8 pl-8">
+              <div class="pb-5 pt-3">
+                <app-analytic-header
+                  route="#"
+                  class="flex-grow hemi-head-bold-italic"
+                  title="Digital Products"
+                  description="List of Digital products and details"
+                ></app-analytic-header>
+              </div>
+              <app-streamer-table
+                (action)="onTableAction($event)"
+                [dataset]="videoData"
+                [columns]="videosTableColumns"
+                [isAction]="true"
+                isStreamer="picture"
+                tableHeaderBackgroundColor="changetablerowcolor"
+                matheadercolor="none"
+              >
+              </app-streamer-table>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

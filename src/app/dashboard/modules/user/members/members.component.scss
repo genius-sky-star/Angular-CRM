@@ -1,0 +1,36 @@
+.search-icon {
+  // @apply text-ggg-gray;
+  color: #464646;
+  font-weight: bold;
+}
+
+.border-none:focus {
+  border: none;
+  outline: none;
+}
+
+.breacrumb-section {
+  display: flex;
+  margin-top: 16px;
+  align-items: center;
+  .breacrumb-text {
+    margin-left: 0.5rem;
+    color: rgba(0, 0, 0, 0.6);
+    opacity: 0.9;
+    font-size: 1rem;
+    font-family: "Roboto-Regular";
+    line-height: 1.5;
+  }
+  img {
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .breacrumb-text-selected {
+    margin-left: 0.5rem;
+    color: black;
+    opacity: 0.9;
+    font-size: 1rem;
+    font-family: "Roboto-Regular";
+  }
+}

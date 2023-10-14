@@ -1,0 +1,119 @@
+<div mat-dialog-content class="ban-dialog-content" *ngIf="!data.isThumbnail">
+  <div class="alert-ban">
+    <img src="../../../../assets/images/warning.svg" />
+    <span>
+      {{ data.alertMessage }}
+    </span>
+  </div>
+
+  <div class="alert-ban-content">
+    <img class="" [src]="'../../../../assets/images/' + data.image" />
+    <p class="ban-username">{{ data.username }}</p>
+    <p *ngIf="data.title !== ''" class="ban-username">{{ data.title }}</p>
+    <p
+      *ngIf="data.userType !== undefined && data.source !== undefined"
+      class="ban-username"
+    >
+      {{ data.userType }} - {{ data.source }}
+    </p>
+    <p class="ban-confirmation">{{ data.confirmationMessage }}</p>
+  </div>
+
+  <div class="line-separator">
+    <div class="line-separator-position"></div>
+  </div>
+
+  <div *ngIf="data.buttons" mat-dialog-actions class="alert-ban-actions">
+    <ng-container *ngFor="let button of data.buttons">
+      <button
+        *ngIf="button.type === 'stroked'"
+        (click)="runHandler($event, button)"
+        class="style-stroked border-none"
+      >
+        {{ button.text }}
+      </button>
+      <button
+        *ngIf="button.type === 'primary'"
+        (click)="runHandler($event, button)"
+        class="style-primary"
+      >
+        {{ button.text }}
+      </button>
+    </ng-container>
+  </div>
+</div>
+
+<mat-card class="content" *ngIf="data.isThumbnail">
+  <div class="grid grid-cols-2 gap-2">
+    <div class="noteContent">
+      <mat-label>User Type: {{ data.thumbnailContent.userType }}</mat-label>
+      <mat-label>Title: {{ data.thumbnailContent.title }}</mat-label>
+      <mat-label>Source: {{ data.thumbnailContent.source }}</mat-label>
+      <mat-label>Date: {{ data.thumbnailContent.date }}</mat-label>
+      <mat-label>Time: {{ data.thumbnailContent.time }}</mat-label>
+    </div>
+    <div class="header-button">
+      <div class="button-container" *ngIf="data.buttons">
+        <ng-container *ngFor="let button of data.buttons">
+          <img
+          *ngIf="button.text === 'delete'"
+            (click)="runHandler(data.thumbnailContent,button)"
+            class="btn-delete"
+            [src]="'../../../../assets/images/'+button.text+'.svg'"
+          />
+          <button 
+          *ngIf="button.text === 'Close'"
+          mat-button class="btn-blue" (click)="runHandler($event, button)">
+            {{ button.text }}
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="table-title">
+    <mat-label class="font20">Members</mat-label>
+    <mat-label class="title-data"
+      >Showing a list of users who viewed this stream</mat-label
+    >
+  </div>
+  <div class="user-stream-table">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container
+            *ngFor="let column of data.displayedColumns"
+            [matColumnDef]="column"
+          >
+            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+            <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="data.displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: data.displayedColumns"></tr>
+        </table>
+      </div>
+      <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container
+            *ngFor="let column of data.displayedColumns"
+            [matColumnDef]="column"
+          >
+          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+          <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="data.displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: data.displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[12, 20, 25]"
+      showFirstLastButtons
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</mat-card>

@@ -1,0 +1,42 @@
+:host {
+  height: 100%;
+  display: block;
+}
+
+main {
+  background-image: url(../../../assets/images/admin_image_dark.png);
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.button-container{
+  margin-top: 24px;
+  background: #c7325f;
+  border-radius: 4px;
+  text-align: center;
+
+  .continue-button {
+    padding-top: 12px;
+    padding-bottom: 6px;
+    font-size: 20px;
+    letter-spacing: 0.14px;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    font-family: "Hemi Head,Bold Italic";
+  }
+}
+
+
+mat-card {
+  width: 50%;
+  border-radius: 0%;
+  background-color: transparent;
+  border: 0;
+
+  mat-card-title {
+    margin: 20px;
+  }
+}

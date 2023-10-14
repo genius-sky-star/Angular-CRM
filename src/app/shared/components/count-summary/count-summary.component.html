@@ -1,0 +1,38 @@
+<h3
+(click)="emitClickEvent()"
+  [ngClass]="
+    titleStyle === 'total-members'
+      ? 'total-members-style '
+      : 'style-total-text'
+  "
+>
+  {{ title }}
+</h3>
+
+<div class="flex">
+  <h1
+    [ngClass]="
+      titleStyle === 'total-members'
+        ? 'pl-3 text-gray-500 text-2xl flex-grow hemi-head-bold-italic'
+        : 'count flex-grow  hemi-head-bold-italic text-gray-500 text-lg'
+    "
+  >
+    {{ count }}
+  </h1>
+
+  <div
+    *ngIf="direction"
+    [ngClass]="
+      titleStyle === 'total-members'
+        ? ' direction  rounded-md '
+        : 'direction rounded '
+    "
+  >
+    <img
+      [src]="'/assets/images/' + direction + '-indicator.svg'"
+      [ngClass]="titleStyle === 'total-members' ? 'w-14 h-14' : 'w-7 h-7'"
+      alt=""
+      srcset=""
+    />
+  </div>
+</div>

@@ -1,0 +1,131 @@
+<div id="user-info-div">
+  <div class="flex justify-between">
+    <div id="user-info-summary">
+      <label>{{ userData.userName }}</label>
+      <ng-container *ngIf="!userData.isOnline">
+        <div class="flex items-center">
+          <img src="/assets/images/Online-Status.svg" />
+          <div class="text-green-600 mr-1">Online</div>
+          <div class="online-status-div">
+            <mat-slide-toggle [checked]="checked" [disabled]="disabled">
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="userData.isOnline">
+        <div class="flex items-center">
+          <img src="/assets/images/Offline-Status.svg" />
+          <span class="text-red-600 ml-1">Offline</span>
+          <div class="online-status-div">
+            <mat-slide-toggle
+              class="online-toggle"
+              [checked]="checked"
+              [disabled]="disabled"
+            >
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container>
+        <div class="wallet-content">
+          <span class="">Wallet</span>
+          <div class="flex">
+            <img
+              class="w-5 mr-1"
+              [src]="'/assets/images/' + userData.avarta"
+              alt=""
+            />
+            <span>{{ userData.wallet }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <button
+      class="text-red-500"
+      (click)="onViewMoreClick()"
+      *ngIf="isExpand === true; else second"
+    >
+      View Less
+    </button>
+    <ng-template #second>
+      <button class="text-red-500" (click)="onViewMoreClick()">
+        View More
+      </button>
+    </ng-template>
+  </div>
+  <div class="font-bold mb-3">
+    <span>{{ fans }}</span>
+    <span>&nbsp;Fans</span>
+  </div>
+  <div class="streamer-main-info">
+    <img class="w-32 mr-4" [src]="'/assets/images/' + userData.avarta" alt="" />
+    <div class="w-full">
+      <div class="row flex justify-between mb-7">
+        <div class="col w-full" id="detail-col">
+          <label>Gamer Tag</label>
+          <span>{{ userData.userName }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Gender</label>
+          <span>{{ userData.gender }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Mobile Number</label>
+          <span>{{ userData.mobileNumber }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Created Date</label>
+          <span>{{ userData.createdData }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Zodiac Sign</label>
+          <span>{{ userData.zodiacSign }}</span>
+        </div>
+      </div>
+      <div class="row flex justify-between mb-7">
+        <div class="col w-full" id="detail-col">
+          <label>Full Name</label>
+          <span>{{ userData.name }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Email</label>
+          <span>{{ userData.email }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>IP Address</label>
+          <span>{{ userData.ipAddress }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Country</label>
+          <span>{{ userData.country }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Occupation</label>
+          <span>{{ userData.occupation }}</span>
+        </div>
+      </div>
+      <div class="row flex justify-between mb-7" *ngIf="isExpand">
+        <div class="col w-full" id="detail-col">
+          <label>Instagram</label>
+          <span>{{ userData.instagram }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Snapchat</label>
+          <span>{{ userData.snapchat }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Twitter</label>
+          <span>{{ userData.twitter }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Youtube</label>
+          <span>{{ userData.youtubu }}</span>
+        </div>
+        <div class="col w-full" id="detail-col">
+          <label>Discord</label>
+          <span>{{ userData.discord }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

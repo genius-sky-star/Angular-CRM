@@ -1,0 +1,20 @@
+<div *ngIf="title" class="heading w-full flex mb-10">
+  <div>
+    <h2 *ngIf="title" class="text-gray-500 text-sm hemi-head-bold-italic">{{title}}</h2>
+    <div>
+      <img [ngClass]="leadingImagePath ? 'block' : 'hidden'" class="inline-block mr-1 leading-4" height="20" width="20" [src]="leadingImagePath" alt="" srcset="">
+      <span *ngIf="count" class="text-md font-bold hemi-head-bold-italic text-gray-700 leading-4 align-middle">{{count}}</span>
+    </div>
+  </div>
+  <div [ngClass]="avatarPath ? 'visible' : 'invisible'" class="text-center mx-auto avatar-info">
+    <img class="block mx-auto" height="30px" [src]="avatarPath" alt="" srcset="">
+    <p class="avatar-name font-bold mt-2 text-gray-500 hemi-head-bold-italic">{{avatarText}}</p>
+  </div>
+</div>
+<canvas *ngIf="lineChartData" baseChart [width]="chartWidth" [height]="chartHeight"
+    [type]="'line'"
+    [data]="lineChartData"
+    [options]="lineChartOptions"
+    [plugins]="plugins"
+    [legend]="lineChartLegend">
+</canvas>

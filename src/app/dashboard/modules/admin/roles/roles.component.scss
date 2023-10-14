@@ -1,0 +1,80 @@
+:host {
+  @apply flex flex-1;
+}
+
+.create-admin-role-btn {
+  background-color: #C7325F;
+  border: none;
+  font-family: "Hemi Head,Bold Italic";
+  font-size: 18px;
+  padding: 1em 1.3em;
+  border-radius: 10px !important;
+}
+
+.role-table {
+  background-color: #fff;
+  padding: 1rem;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.admin-table {
+  background-color: #fff;
+  padding: 1rem;
+  width: 82%;
+  margin: 0 auto;
+}
+
+.cancel-save-btn {
+  position: absolute;
+  bottom: 7%;
+  right: 7%;
+  font-family: 'Hemi Head,Bold Italic';
+
+  .save-btn {
+    background-color: #C7325F;
+    border: none;
+    padding: 1.1rem;
+    border-radius: 10px !important;
+  }
+
+  .cancel-btn {
+    background-color: #fff;
+    color: #b52d56 !important;
+    border: 2px solid #c7325f;
+    padding: 1.1rem;
+    border-radius: 10px !important;
+  }
+}
+
+.disabled-btn {
+  color: #C4C4C4 !important;
+  display: contents;
+  font-size: 20px;
+  font-family: 'Hemi Head,Bold Italic';
+  img {
+    margin: 8px;
+    height: 30px;
+  }
+}
+
+.active-btn {
+  color: #C7325F !important;
+  display: contents;
+  font-size: 20px;
+  font-family: 'Hemi Head,Bold Italic';
+  img {
+    margin: 8px;
+    height: 30px;
+  }
+}
+
+::ng-deep {
+  .mdc-tab-indicator__content--underline {
+    border-color: #c7325f !important;
+  }
+
+  .mat-mdc-tab-header {
+    background-color: #f6e7eb;
+  }
+}

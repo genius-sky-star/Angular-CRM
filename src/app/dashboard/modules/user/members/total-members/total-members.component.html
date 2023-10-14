@@ -1,0 +1,70 @@
+<app-add-token-sidenav-bar 
+  [sidenavOpened]="sidenavOpened" [tokendata]="token" (sidenavOpenedChange)="sidenavOpenedChange($event)">
+  <ng-container panel>
+  </ng-container>
+  <ng-container main>
+    <div class="breacrumb-section">
+      <p class="mr-2 breacrumb-text">Users</p> 
+
+      <img src="../../../../../assets/images/arrow-right.svg" />
+      <a class="mr-2 breacrumb-text" [routerLink]="['/dashboard/user/members']">
+        Members
+      </a>
+
+      <img src="../../../../../assets/images/arrow-right.svg" />
+      <a
+        class="mr-2 breacrumb-text-selected"
+        [routerLink]="['/dashboard/user/members/total-members']"
+      >
+        Total Members
+      </a>
+    </div>
+    <div class="bg-white mt-4 mb-7 rounded border-1 border-gray">
+      <div class="flex items-center justify-center">
+        <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+        <input
+          placeholder="Global search"
+          class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+          type="text"
+        />
+      </div>
+    </div>
+
+    <div class="mr-1">
+      <div class="mb-6 px-2 py-6 bg-white rounded-md">
+        <div class="flex">
+          <app-analytic-header
+            route="/dashboard/user/members"
+            class="flex-grow hemi-head-bold-italic"
+            title="Members Analytics"
+            description="Showing analysis of Total members for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-4 ml-3.5">
+          <app-count-summary
+            route="/dashboard/user/members/total-members"
+            *ngFor="let memberCount of totalMembersCountData"
+            titleStyle="total-members"
+            [title]="memberCount.title"
+            [count]="memberCount.count"
+            [direction]="memberCount.direction"
+            class="mr-6"
+          ></app-count-summary>
+        </div>
+      </div>
+
+      <app-table-common
+        (action)="onTableAction($event)"
+        (usernameClickEmitter)="navigateToMemberProfile($event)"
+        [dataset]="data"
+        [columns]="tableColumns"
+        [isAction]="true"
+        [isOddRowsChangeColor]="true"
+        tableHeaderBackgroundColor="changetablerowcolor"
+        matheadercolor="none"
+      >
+      </app-table-common>
+    </div>
+  </ng-container>
+</app-add-token-sidenav-bar>

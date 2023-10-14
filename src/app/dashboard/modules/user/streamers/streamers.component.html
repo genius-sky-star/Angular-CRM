@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="flex mt-4 items-center">
+    <a
+      [routerLink]="['/dashboard/home']"
+      class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+    >
+      Admin Dashboard
+    </a>
+    <img
+      src="../../../../../assets/images/arrow-right.svg"
+      class="w-5 h-5 relative"
+    />
+    <!-- <a
+      [routerLink]="['/dashboard/user/streamers']"
+      class="mr-2 text-black text-opacity-60 text-base roboto-regular leading-normal tracking-tight"
+    >
+      Streamers
+    </a> -->
+    <div
+      class="ml-2 text-black text-opacity-90 text-base roboto-regular leading-normal tracking-tight"
+    >
+      Streamers
+    </div>
+  </div>
+
+  <div class="bg-white mt-4 mb-7 rounded border-1 border-gray">
+    <div class="flex items-center justify-center">
+      <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+      <input
+        placeholder="Global search"
+        class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 w-full rounded">
+    <div class="mr-1">
+      <div class="mb-6 px-2 py-6 bg-white rounded-md h-52">
+        <div class="flex">
+          <app-analytic-header
+            route="/dashboard/user/streamers/total-streamers"
+            class="flex-grow hemi-head-bold-italic"
+            title="Streamers Analytics"
+            description="Showing analysis for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-4">
+          <app-count-summary
+            *ngFor="let streamerCount of streamerAnalyticData"
+            [title]="streamerCount.title"
+            [count]="streamerCount.count"
+            [direction]="streamerCount.direction"
+            class="mr-3"
+          ></app-count-summary>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded-xl">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Streamers Demographic"
+            description="Showing demographic of streamers"
+          ></app-analytic-header>
+        </div>
+        <div class="flex mt-4">
+          <app-world-map
+            class="w-96 h-72 justify-end items-center inline-flex"
+          ></app-world-map>
+        </div>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded-xl">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Scheduled Streams"
+            description="Showing analysis for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <div class="flex mt-4">
+          <app-streamer-table
+            [dataset]="SchduledStreamersData"
+            [columns]="tableColumn"
+            isStreamer="general"
+            tableHeaderBackgroundColor="changetablerowcolor"
+            matheadercolor="none"
+          ></app-streamer-table>
+        </div>
+      </div>
+    </div>
+
+    <div class="ml-1">
+      <div class="flex mb-6 space-content-around">
+        <app-line-chart
+          *ngFor="let config of topStreamers"
+          [lineChartConfig]="config"
+          class="ml-1 mr-1 w-48 h-52 flex-1"
+        ></app-line-chart>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded-xl">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Top 10 Streamers"
+            description="Showing analysis for the month of July"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <app-bar-chart></app-bar-chart>
+      </div>
+
+      <div class="mb-6 px-2 py-4 bg-white rounded-xl">
+        <div class="flex">
+          <app-analytic-header
+            class="flex-grow hemi-head-bold-italic"
+            title="Earnings"
+            description="Showing number of cash paid for token purchase by Members"
+          ></app-analytic-header>
+          <app-time-filter [selected]="selected"></app-time-filter>
+        </div>
+        <app-line-chart
+          [lineChartConfig]="earningsConfig"
+          class="mr-3"
+        ></app-line-chart>
+      </div>
+    </div>
+  </div>
+</div>

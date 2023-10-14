@@ -1,0 +1,183 @@
+<table
+  mat-table
+  #table
+  [dataSource]="dataSource"
+  class="mat-elevation-z0"
+  matSort
+>
+  <ng-container
+    *ngFor="let column of columns"
+    [matColumnDef]="column.columnDef"
+  >
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>{{
+      column.header
+    }}</mat-header-cell>
+    <mat-cell *cdkCellDef="let row">
+      <div
+        *ngIf="column.isImage === true; else second"
+        class="flex justify-start items-center"
+      >
+        <img class="w-7 h-7" [src]="'/assets/images/' + column.image" />
+        <a
+          class="ml-2 text-sky-600 text-base font-normal"
+          *ngIf="column.columnDef === 'username'"
+          (click)="usernameClick(row)"
+        >
+          {{ row[column.columnDef] }}
+        </a>
+        <p
+          class="ml-2 text-xs text-black text-opacity-90"
+          *ngIf="column.columnDef !== 'username'"
+        >
+          <!-- {{ row[column.columnDef] }} -->
+        </p>
+      </div>
+
+      <ng-template #second>
+        <div
+          *ngIf="column.isNumberAndImage === true; else third"
+          class="text-sm flex items-center justify-center bg-primary/20 w-16 h-7 rounded-lg"
+        >
+          <img
+            class="w-3.5 h-3.5 rounded-lg"
+            [src]="'/assets/images/' + column.image"
+          />
+          <p class="ml-0.5 opacity-70">{{ row[column.columnDef] }}</p>
+        </div>
+      </ng-template>
+
+      <ng-template #third>
+        <div class="w-20" *ngIf="column.isVideo === true; else forth">
+          <button (click)="videoClick(row.videoUrl)">
+            <video [src]="row.videoUrl" type="video/mp4"></video>
+          </button>
+        </div>
+      </ng-template>
+
+      <ng-template #forth>
+        <div class="w-20" *ngIf="column.isVideo === false; else fifth">
+          <img [src]="row.url" alt="" />
+        </div>
+      </ng-template>
+
+      <ng-template #fifth>
+        <div
+          *ngIf="column.isImageR === true; else sixth"
+          class="flex justify-start items-center"
+        >
+          <p class="ml-2 text-xs text-black text-opacity-90">
+            {{ row[column.columnDef] }}
+          </p>
+          <img class="w-7 h-7" [src]="'/assets/images/' + column.image" />
+        </div>
+      </ng-template>
+
+      <ng-template #sixth>
+        <div *ngIf="isLocation; else seven">
+          <p class="ml-2 text-xs text-black text-opacity-90">
+            {{ row[column.columnDef] }}
+          </p>
+        </div>
+      </ng-template>
+
+      <ng-template #seven>
+        {{ row[column.columnDef] }}
+      </ng-template>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action" *ngIf="isStreamer === 'main'">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      actions-streamer
+      [value]="element"
+      (buttonAction)="onTableAction($event)"
+    >
+      {{ element.weight }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action" *ngIf="isStreamer === 'general'">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      actions-buttons
+      value="value"
+      (buttonAction)="onTableAction($event)"
+    >
+      {{ element.weight }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action" *ngIf="isStreamer === 'record'">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      actions-streamer-recording
+      [value]="element"
+      (buttonAction)="onTableAction($event)"
+    >
+      {{ element.weight }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action" *ngIf="isStreamer === 'gotoprofile'">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      actions-go-to-profile
+      [value]="element"
+      (buttonAction)="onTableAction($event)"
+    >
+      {{ element.weight }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action" *ngIf="isStreamer === 'picture'">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      action-products
+      [value]="element"
+      (buttonAction)="onTableAction($event)"
+    >
+      {{ element.weight }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="reviewAction">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let element" class="flex justify-end">
+      <button class="button-style" (click)="reviewClick(element)">
+        Review
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row
+    *matHeaderRowDef="displayedColumns"
+    [ngClass]="
+      matheadercolor === 'none'
+        ? 'mat-header-background-color'
+        : 'mat-header-color'
+    "
+  ></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    [ngClass]="
+      tableHeaderBackgroundColor === 'changetablerowcolor'
+        ? 'row special'
+        : 'row'
+    "
+    (click)="onRowAction(row)"
+  ></mat-row>
+</table>
+<mat-paginator
+  *ngIf="dataSource.data.length !== 0 && isPagenator === true"
+  style-paginator
+  [length]="dataSource.data.length"
+  [pageSize]="3"
+  [pageSizeOptions]="[3, 5, 10, 20]"
+>
+</mat-paginator>

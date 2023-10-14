@@ -1,0 +1,168 @@
+<div class="container">
+  <div class="breacrumb-section">
+    <p class="mr-2 breacrumb-text">Archives</p>
+
+    <img src="../../../../../assets/images/arrow-right.svg" />
+    <a
+      class="mr-2 breacrumb-text-selected"
+      [routerLink]="['/dashboard/archives/chats']"
+    >
+      Chats
+    </a>
+  </div>
+
+  <div class="bg-white mt-4 mb-3 rounded border-1 border-gray">
+    <div class="flex items-center justify-center">
+      <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+      <input
+        placeholder="Search by: Game Tag, Full Name"
+        class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <div class="note-content">
+    <mat-label class="note-title">Chats Archives</mat-label>
+    <mat-label class="note-subtitle">
+      This section displays thumbnails from streamer live sessions pending
+      archiving.
+    </mat-label>
+  </div>
+
+  <div class="archive-chats-content">
+    <div class="user-select-date-picker" *ngIf="isUserTypeDateSearchShow">
+      <div class="mat-form-field-title mr-6">
+        <h4>User Type</h4>
+        <mat-form-field>
+          <mat-label>Select User</mat-label>
+          <mat-select
+            (selectionChange)="userTypeChange($event)"
+            [(ngModel)]="userType"
+          >
+            <mat-option *ngFor="let type of userTypes" [value]="type">
+              {{ type }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="mat-form-field-title">
+        <h4>Date</h4>
+        <mat-form-field>
+          <mat-label>Pick date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            (dateChange)="chatDateChange($event)"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+            [(ngModel)]="chatDate"
+          >
+            <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div
+      class="form-search"
+      *ngIf="chatDate && userType && isUserTypeDateSearchShow"
+    >
+      <input
+        class="search-bar border-none"
+        type="text"
+        matInput
+        (keyup)="searchValueChange($event)"
+      />
+      <button mat-button class="search-button" (click)="searchChat($event)">
+        Search
+      </button>
+    </div>
+
+    <div *ngIf="chatData" class="chat-data">
+      <mat-label class="chat-header"
+        >Showing all 5 Chats Found on 28-05-2023</mat-label
+      >
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="userData">
+          <th class="name-col" mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.userData.name }}
+            <p>{{ element.userData.email }}</p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th class="date-col" mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.date }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="message">
+          <th class="message-col" mat-header-cell *matHeaderCellDef>Message</th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.message }}</p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="btn">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-button
+              class="view-message-btn"
+              (click)="viewMessage(element)"
+            >
+              View Message
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        #paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+    <div *ngIf="chatsList && chatsList.length" class="chat-list-data">
+      <mat-label class="chat-header"
+        >Showing chat between Floxy Nina and Alicia Stevens found on
+        28-05-2023</mat-label
+      >
+      <table mat-table [dataSource]="chatDataSource">
+        <ng-container matColumnDef="time">
+          <th class="time-col" mat-header-cell *matHeaderCellDef>Time</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.time }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th class="name-col" mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="message">
+          <th class="message-col" mat-header-cell *matHeaderCellDef>Message</th>
+          <td mat-cell *matCellDef="let element">
+            <p>{{ element.message }}</p>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="chatColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: chatColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

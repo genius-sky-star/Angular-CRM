@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="breacrumb-section">
+    <p class="mr-2 breacrumb-text">Archives</p>
+
+    <img src="../../../../../assets/images/arrow-right.svg" />
+    <a
+      class="mr-2 breacrumb-text-selected"
+      [routerLink]="['/dashboard/archives/recordings']"
+    >
+      Recording
+    </a>
+  </div>
+
+  <div class="bg-white mt-4 mb-3 rounded border-1 border-gray">
+    <div class="flex items-center justify-center">
+      <mat-icon class="mx-2 text-ggg-gray-600 search-icon">search</mat-icon>
+      <input
+        placeholder="Search by: Game Tag, Full Name"
+        class="border-none px-2 text-sm text-black text-opacity-60 flex-grow h-12 hemi-head-bold-italic"
+        type="text"
+      />
+    </div>
+  </div>
+
+  <div class="note-content">
+    <mat-label class="note-title">Recording</mat-label>
+    <mat-label class="note-subtitle">
+      This section displays thumbnails from streamer live sessions pending
+      archiving.
+    </mat-label>
+  </div>
+
+  <app-table-common
+    #userTable
+    [dataset]="thumbnailTableData"
+    [columns]="archiveColumns"
+    [isArchiveAction]="true"
+    (action)="onTableAction($event)"
+  >
+  </app-table-common>
+</div>
